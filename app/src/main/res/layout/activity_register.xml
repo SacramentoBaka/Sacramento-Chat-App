@@ -79,7 +79,7 @@
         android:textSize="15dp"/>
 
     <Button
-        android:id="@+id/idRegisterLogin"
+        android:id="@+id/idRegisterToLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"

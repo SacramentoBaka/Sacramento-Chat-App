@@ -47,7 +47,7 @@
         android:background="@drawable/custom_input"/>
 
     <CheckBox
-        android:id="@+id/idLoginCheckBoxa"
+        android:id="@+id/idLoginCheckBox"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="show password"
@@ -66,7 +66,7 @@
         android:textSize="15dp"/>
 
     <Button
-        android:id="@+id/idLoginSignUp"
+        android:id="@+id/idLoginToSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
