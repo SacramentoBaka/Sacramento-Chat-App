@@ -74,7 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
-        android:text="Login"
+        android:text="Register Account"
         android:layout_margin="10dp"
         android:textSize="15dp"/>
 
@@ -83,7 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
-        android:text="Sign Up"
+        android:text="Login"
         android:layout_margin="10dp"
         android:textSize="15dp"/>
 
