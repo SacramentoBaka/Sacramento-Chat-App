@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         BottomNavigationView mainBottomNavigationView = findViewById(R.id.idMainBottomNavigation);
         mainBottomNavigationView.setOnItemSelectedListener(onNav);
-        getSupportFragmentManager().beginTransaction().replace(R.id.idMainFrame, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.idMainFrame, new ProfileFragment()).commit();
 
 
     }
