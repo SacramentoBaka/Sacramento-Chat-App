@@ -78,12 +78,11 @@ public class RegisterActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.INVISIBLE);
                 Toast.makeText(RegisterActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             }
-            loginBTN.setOnClickListener(view1 -> {
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            });
-
+        });
+        loginBTN.setOnClickListener(view1 -> {
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
     private void sendToMain() {
