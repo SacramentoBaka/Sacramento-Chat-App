@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".CreateProfile">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+        android:text="Create Profile"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="20sp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="30dp"
+        app:cardCornerRadius="75dp"
+        app:cardPreventCornerOverlap="false">
+
+        <ImageView
+            android:id="@+id/idCreateProfileIMG"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:scaleType="fitCenter" />
+
+    </androidx.cardview.widget.CardView>
+
+    <EditText
+        android:id="@+id/idCreateProfileTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:drawableLeft="@drawable/baseline_person_24"
+        android:drawablePadding="7dp"
+        android:hint="Name"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/idCreateProfileTextProfession"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:drawableLeft="@drawable/baseline_grade_24"
+        android:drawablePadding="7dp"
+        android:hint="Profession"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/idCreateProfileTextBio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:drawableLeft="@drawable/baseline_bio"
+        android:drawablePadding="7dp"
+        android:hint="Bio"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/idCreateProfileTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:drawableLeft="@drawable/baseline_email"
+        android:drawablePadding="7dp"
+        android:hint="Eamil"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/idCreateProfileTextWeb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:drawableLeft="@drawable/baseline_travel_explore_24"
+        android:drawablePadding="7dp"
+        android:hint="Web"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/idCreateBTN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_red_light"
+        android:text="Save Profile"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+    <ProgressBar
+        android:id="@+id/idCreateProfileProgressBar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@android:color/white"
+        android:visibility="visible" />
+
+</LinearLayout>
