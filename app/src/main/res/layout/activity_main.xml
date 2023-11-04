@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/idMainButton"
+
+    <FrameLayout
+        android:id="@+id/idMainFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/idMainBottomNavigation"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/idMainBottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:background="@android:color/white"
-        android:text="SignOut"
-        android:onClick="logOut"
-        android:layout_margin="10dp"
-        android:textSize="15dp"/>
-
-</LinearLayout>
+        app:itemIconTint="@android:color/black"
+        app:menu="@menu/bottom_menu"
+        android:focusableInTouchMode="true"/>
+</RelativeLayout>

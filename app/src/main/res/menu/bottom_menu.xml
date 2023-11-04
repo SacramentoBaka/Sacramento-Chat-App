@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/idMenuProfile"
+        android:title="Profile"
+        android:icon="@drawable/baseline_person_24"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/idMenuAsk"
+        android:title="Ask"
+        android:icon="@drawable/baseline_rate_review_24"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/idMenuQueue"
+        android:title="Post"
+        android:icon="@drawable/baseline_queue_24"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/idMenuHome"
+        android:title="Home"
+        android:icon="@drawable/baseline_home_24"
+        app:showAsAction="always"/>
+
+
+
+</menu>
