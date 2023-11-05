@@ -133,6 +133,7 @@ public class CreateProfile extends AppCompatActivity {
                         Uri downloadUri = task.getResult();
                         Map<String, String> profile = new HashMap<>();
                         profile.put("name", nameText);
+                        profile.put("userID", currentUserId);
                         profile.put("profession", professionText);
                         profile.put("bio", boiText);
                         profile.put("url", downloadUri.toString());

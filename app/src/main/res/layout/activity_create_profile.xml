@@ -78,7 +78,7 @@
         android:layout_margin="4dp"
         android:drawableLeft="@drawable/baseline_email"
         android:drawablePadding="7dp"
-        android:hint="Eamil"
+        android:hint="Email"
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
         android:textColor="@android:color/black" />

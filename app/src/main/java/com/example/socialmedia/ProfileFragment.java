@@ -26,16 +26,16 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        TextView textView = getActivity().findViewById(R.id.idProfileTo);
-        textView.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.idProfileTo:
-            Intent intent = new Intent(getActivity(), CreateProfile.class);
-            startActivity(intent);
-        }
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 }
