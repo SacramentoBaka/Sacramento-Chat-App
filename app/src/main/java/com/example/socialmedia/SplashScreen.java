@@ -11,6 +11,9 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class SplashScreen extends AppCompatActivity {
 
     private ImageView imageView;
@@ -44,5 +47,27 @@ public class SplashScreen extends AppCompatActivity {
             }
         }, 2500);
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(user != null){
+
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else {
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        }, 2500);
     }
 }

@@ -65,6 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 sendToMain();
                             }else {
+                                progressBar.setVisibility(View.INVISIBLE);
                                 String error = task.getException().getMessage();
                                 Toast.makeText(RegisterActivity.this, error, Toast.LENGTH_SHORT).show();
                             }

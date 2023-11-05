@@ -26,7 +26,7 @@ import com.squareup.picasso.Picasso;
 public class ProfileFragment extends Fragment {
     private ImageView profileIMG;
     private TextView name, profession, bio, email, web;
-    private ImageButton updateProfile_IMG_BTN;
+    private ImageButton updateProfile_IMG_BTN, menu;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,6 +40,15 @@ public class ProfileFragment extends Fragment {
         email = view.findViewById(R.id.idProfileFragEmail);
         web = view.findViewById(R.id.idProfileFragWeb);
         updateProfile_IMG_BTN = view.findViewById(R.id.idProfileFragEdit);
+        menu = view.findViewById(R.id.idProfileFragMenu);
+
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BottomSheetMenu sheetMenu = new BottomSheetMenu();
+                sheetMenu.show(getFragmentManager(), "bottomSheet");
+            }
+        });
 
         updateProfile_IMG_BTN.setOnClickListener(new View.OnClickListener() {
             @Override
