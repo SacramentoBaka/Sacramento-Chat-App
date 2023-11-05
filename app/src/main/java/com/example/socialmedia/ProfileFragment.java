@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,9 +23,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
-public class ProfileFragment extends Fragment implements View.OnClickListener {
+public class ProfileFragment extends Fragment {
     private ImageView profileIMG;
     private TextView name, profession, bio, email, web;
+    private ImageButton updateProfile_IMG_BTN;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,12 +39,17 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         bio = view.findViewById(R.id.idProfileFragBio);
         email = view.findViewById(R.id.idProfileFragEmail);
         web = view.findViewById(R.id.idProfileFragWeb);
+        updateProfile_IMG_BTN = view.findViewById(R.id.idProfileFragEdit);
+
+        updateProfile_IMG_BTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), UpdateProfile.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
-    }
-    @Override
-    public void onClick(View view) {
-
     }
     @Override
     public void onStart() {
@@ -58,7 +65,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if(task.getResult().exists()){
-
                             String nameResults = task.getResult().getString("name");
                             String bioResults = task.getResult().getString("bio");
                             String emailResults = task.getResult().getString("email");
