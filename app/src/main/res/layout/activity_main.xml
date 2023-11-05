@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <FrameLayout
         android:id="@+id/idMainFrame"
         android:layout_width="match_parent"
@@ -17,6 +16,7 @@
         android:id="@+id/idMainBottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:itemTextColor="@color/black"
         android:layout_alignParentBottom="true"
         android:background="@android:color/white"
         app:itemIconTint="@android:color/black"

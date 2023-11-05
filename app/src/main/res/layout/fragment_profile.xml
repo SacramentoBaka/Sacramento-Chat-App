@@ -195,7 +195,7 @@
             android:text="Web"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/holo_blue_dark"
             android:textSize="15sp"
             android:textAlignment="textStart"/>
         <TableRow
