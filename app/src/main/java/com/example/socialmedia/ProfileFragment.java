@@ -42,6 +42,13 @@ public class ProfileFragment extends Fragment {
         updateProfile_IMG_BTN = view.findViewById(R.id.idProfileFragEdit);
         menu = view.findViewById(R.id.idProfileFragMenu);
 
+        profileIMG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ImageActivity.class);
+                startActivity(intent);
+            }
+        });
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
