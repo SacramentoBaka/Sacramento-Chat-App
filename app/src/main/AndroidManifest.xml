@@ -16,28 +16,22 @@
             android:exported="false" />
         <activity
             android:name=".ImageActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            android:exported="false" />
         <activity
             android:name=".PrivacyActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            android:exported="false" />
         <activity
             android:name=".UpdateProfile"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            android:exported="false" />
         <activity
             android:name=".CreateProfile"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            android:exported="false" />
         <activity
             android:name=".RegisterActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            android:exported="false" />
         <activity
             android:name=".SplashScreen"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,12 +40,10 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            android:exported="false" />
     </application>
 
 </manifest>
