@@ -72,10 +72,12 @@ public class AskActivity extends AppCompatActivity {
                     member.setPrivacy(privacy);
                     member.setUserID(userID);
                     String id = UserQuestion.push().getKey();
+                    assert id != null;
                     UserQuestion.child(id).setValue(member);
 
                     String child = AllQuestion.push().getKey();
                     member.setKey(id);
+                    assert child != null;
                     AllQuestion.child(child).setValue(member);
 
                     Toast.makeText(AskActivity.this, "Submitted", Toast.LENGTH_SHORT).show();
