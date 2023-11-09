@@ -12,6 +12,12 @@
         android:theme="@style/Theme.SocialMedia"
         tools:targetApi="31">
         <activity
+            android:name=".UserQuestions"
+            android:exported="false" />
+        <activity
+            android:name=".RelatedQuestions"
+            android:exported="false" />
+        <activity
             android:name=".AskActivity"
             android:exported="false" />
         <activity

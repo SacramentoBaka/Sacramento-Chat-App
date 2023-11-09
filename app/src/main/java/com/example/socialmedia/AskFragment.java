@@ -75,8 +75,8 @@ public class AskFragment extends Fragment {
         profileIMG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(myContext, ImageActivity.class);
-                startActivity(intent);
+                BottomSheetAskFragment bottomSheetAskFragment = new BottomSheetAskFragment();
+                bottomSheetAskFragment.show(getFragmentManager(), "bottom");
             }
         });
         return view;
