@@ -23,7 +23,7 @@ public class QuestionsViewHolder extends RecyclerView.ViewHolder {
 
     ImageView imageView;
     ImageButton imageButton;
-    TextView timeResult, nameResult, questionResult;
+    TextView timeResult, nameResult, questionResult, userDelete;
     DatabaseReference favouriteDatabaseReference;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -68,6 +68,22 @@ public class QuestionsViewHolder extends RecyclerView.ViewHolder {
 
             }
         });
+    }
+
+    public void setItemUserQ(Application activity, String name, String url, String userID, String key, String question,
+                               String privacy, String time){
+
+        ImageView userImage = itemView.findViewById(R.id.idUserQItemIMG);
+        TextView userTimeTV = itemView.findViewById(R.id.idUserQItemTime);
+        TextView userNameTV = itemView.findViewById(R.id.idUserQItemName);
+        TextView userQuestionTV = itemView.findViewById(R.id.idUserQItemQuestion);
+        userDelete = itemView.findViewById(R.id.idUserQItemDelete);
+
+        Picasso.get().load(url).into(userImage);
+        userTimeTV.setText(time);
+        userNameTV.setText(name);
+        userQuestionTV.setText(question);
+
     }
 
     public void setItemRelated(Application activity, String name, String url, String userID, String key, String question,

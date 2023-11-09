@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AskFragment">
+    tools:context=".RelatedQuestions">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/idAskFragTop"
+        android:id="@+id/idRelatedActivityTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/white"
@@ -37,7 +37,7 @@
             app:cardPreventCornerOverlap="false">
 
             <ImageView
-                android:id="@+id/idAskFragProfileIMG"
+                android:id="@+id/idRelatedProfileIMG"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/baseline_person_24"
@@ -54,6 +54,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/idAskFragTop" />
+        app:layout_constraintTop_toBottomOf="@id/idRelatedActivityTop" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,7 +24,7 @@ public class RelatedQuestions extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference reference;
+    private DatabaseReference reference;
     private FirebaseRecyclerAdapter<QuestionMember, QuestionsViewHolder> adapter;
     private FirebaseRecyclerOptions<QuestionMember> options;
 

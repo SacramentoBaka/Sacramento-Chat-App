@@ -2,7 +2,6 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/transparent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
     android:layout_margin="5dp">
@@ -26,7 +25,7 @@
                 app:cardPreventCornerOverlap="false">
 
                 <ImageView
-                    android:id="@+id/idRelatedItemIMG"
+                    android:id="@+id/idUserQItemIMG"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/baseline_person_24"
@@ -43,7 +42,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/idRelatedItemTime"
+                android:id="@+id/idUserQItemTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
@@ -51,7 +50,7 @@
                 android:textColor="@color/red"
                 android:layout_gravity="end"/>
             <TextView
-                android:id="@+id/idRelatedItemName"
+                android:id="@+id/idUserQItemName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="5dp"
@@ -59,7 +58,7 @@
                 android:hint="Name"
                 android:textColor="@android:color/darker_gray" />
             <TextView
-                android:id="@+id/idRelatedItemQuestion"
+                android:id="@+id/idUserQItemQuestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="5dp"
@@ -75,15 +74,14 @@
                 android:gravity="center_vertical|end">
 
                 <TextView
-                    android:id="@+id/idRelatedItemReply"
+                    android:id="@+id/idUserQItemDelete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:textColor="@color/red"
-                    android:text="View Reply"
+                    android:text="Delete"
                     android:textSize="15sp"
                     android:padding="5dp"/>
-
             </LinearLayout>
 
         </LinearLayout>
