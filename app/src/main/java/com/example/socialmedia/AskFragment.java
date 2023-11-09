@@ -21,8 +21,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -35,9 +39,12 @@ public class AskFragment extends Fragment {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference reference;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference, favouriteReference, favouriteListRef;
+    private Boolean favouriteChecker = false;
+    private  QuestionMember member;
+    String currentUserID;
     private RecyclerView recyclerView;
-    private FirebaseRecyclerAdapter<QuestionMember, QuestionsAdapter> adapter;
+    private FirebaseRecyclerAdapter<QuestionMember, QuestionsViewHolder> adapter;
     FirebaseRecyclerOptions<QuestionMember> options;
 
     private ImageView profileIMG;
@@ -48,12 +55,15 @@ public class AskFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ask, container, false);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String currentUserID = user.getUid();
-        floatingButton = view.findViewById(R.id.idAskFragFloatingButton);
-        profileIMG = view.findViewById(R.id.idAskFragProfileIMG);
+        currentUserID = user.getUid();
         reference = db.collection("user").document(currentUserID);
         databaseReference = database.getReference("All Questions");
+        floatingButton = view.findViewById(R.id.idAskFragFloatingButton);
+        profileIMG = view.findViewById(R.id.idAskFragProfileIMG);
         recyclerView = view.findViewById(R.id.idAskFragRecyclerView);
+        member = new QuestionMember();
+        favouriteReference = database.getReference("Favourites");
+        favouriteListRef = database.getReference("Favourite List").child(currentUserID);
 
         floatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,22 +87,69 @@ public class AskFragment extends Fragment {
         super.onStart();
 
         options = new FirebaseRecyclerOptions.Builder<QuestionMember>().setQuery(databaseReference, QuestionMember.class).build();
-        adapter = new FirebaseRecyclerAdapter<QuestionMember, QuestionsAdapter>(options) {
+        adapter = new FirebaseRecyclerAdapter<QuestionMember, QuestionsViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull QuestionsAdapter holder, int position, @NonNull QuestionMember model) {
+            protected void onBindViewHolder(@NonNull QuestionsViewHolder holder, int position, @NonNull QuestionMember model) {
                 // pattern : name, url, userID, key, question, privacy, time;
                 holder.setItem(getActivity(), model.getName(),
                         model.getUrl(), model.getUserID(), model.getKey(),
                         model.getQuestion(), model.getPrivacy(), model.getTime());
+                //For Favourite Button
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String currentUserID = user.getUid();
+                final String postKey = getRef(position).getKey();
 
+                String quention = getItem(position).getQuestion();
+                String name = getItem(position).getName();
+                String url = getItem(position).getUrl();
+                String time = getItem(position).getTime();
+                String privacy = getItem(position).getPrivacy();
+                String userID = getItem(position).getUserID();
+
+                holder.favouriteChecker(postKey);
+                holder.imageButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        favouriteChecker = true;
+                        favouriteReference.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                if(favouriteChecker.equals(true)){
+                                    if(snapshot.child(postKey).hasChild(currentUserID)){
+                                        favouriteReference.child(postKey).child(currentUserID).removeValue();
+                                        delete(time);
+                                        favouriteChecker = false;
+                                    }else {
+                                        favouriteReference.child(postKey).child(currentUserID).setValue(true);
+                                        member.setName(name);
+                                        member.setTime(time);
+                                        member.setPrivacy(privacy);
+                                        member.setUserID(userID);
+                                        member.setUrl(url);
+                                        member.setQuestion(quention);
+
+                                        String id = favouriteListRef.push().getKey();
+                                        favouriteListRef.child(id).setValue(member);
+                                        favouriteChecker = false;
+                                    }
+                                }
+
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                });
             }
-
             @NonNull
             @Override
-            public QuestionsAdapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public QuestionsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
                 View view = LayoutInflater.from(myContext).inflate(R.layout.question_item, parent, false);
-                return new QuestionsAdapter(view);
+                return new QuestionsViewHolder(view);
             }
         };
         adapter.startListening();
@@ -113,6 +170,23 @@ public class AskFragment extends Fragment {
                         }
                     }
                 });
+    }
+
+    private void delete(String time) {
+        Query query = favouriteListRef.orderByChild("time").equalTo(time);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    dataSnapshot.getRef().removeValue();
+                    Toast.makeText(myContext, "Question Deleted Successfully", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override

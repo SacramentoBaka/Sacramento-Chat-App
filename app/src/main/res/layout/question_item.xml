@@ -83,6 +83,15 @@
                     android:textSize="15sp"
                     android:padding="5dp"/>
 
+                <ImageButton
+
+                    android:id="@+id/idQuestionItemIMGBTN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_turned_in_not_24"
+                    android:padding="5dp"
+                    android:background="@android:color/transparent"/>
+
             </LinearLayout>
 
         </LinearLayout>
