@@ -45,7 +45,7 @@ public class AskFragment extends Fragment {
     String currentUserID;
     private RecyclerView recyclerView;
     private FirebaseRecyclerAdapter<QuestionMember, QuestionsViewHolder> adapter;
-    FirebaseRecyclerOptions<QuestionMember> options;
+    private FirebaseRecyclerOptions<QuestionMember> options;
 
     private ImageView profileIMG;
 
@@ -99,7 +99,7 @@ public class AskFragment extends Fragment {
                 String currentUserID = user.getUid();
                 final String postKey = getRef(position).getKey();
 
-                String quention = getItem(position).getQuestion();
+                String question = getItem(position).getQuestion();
                 String name = getItem(position).getName();
                 String url = getItem(position).getUrl();
                 String time = getItem(position).getTime();
@@ -127,7 +127,7 @@ public class AskFragment extends Fragment {
                                         member.setPrivacy(privacy);
                                         member.setUserID(userID);
                                         member.setUrl(url);
-                                        member.setQuestion(quention);
+                                        member.setQuestion(question);
 
                                         String id = favouriteListRef.push().getKey();
                                         favouriteListRef.child(id).setValue(member);
