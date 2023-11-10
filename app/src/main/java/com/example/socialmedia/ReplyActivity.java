@@ -67,7 +67,6 @@ public class ReplyActivity extends AppCompatActivity {
             postKey = extra.getString("postKey");
             key = extra.getString("key");
 
-
         } else {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
         }
@@ -85,21 +84,16 @@ public class ReplyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 Intent intent = new Intent(getApplicationContext(), AnswerActivity.class);
                 intent.putExtra("u", userID);
                 intent.putExtra("p", postKey);
-//                        intent.putExtra("key", privacy);
                 startActivity(intent);
-
             }
         });
-
     }
     @Override
     protected void onStart() {
         super.onStart();
-
         // Question User Reference
         userReference.get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

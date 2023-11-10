@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class RelatedQuestions extends AppCompatActivity {
-
     private RecyclerView recyclerView;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference reference;
@@ -53,13 +53,22 @@ public class RelatedQuestions extends AppCompatActivity {
                 String currentUserID = user.getUid();
                 final String postKey = getRef(position).getKey();
 //
-//                String question = getItem(position).getQuestion();
+                String question = getItem(position).getQuestion();
 //                String name = getItem(position).getName();
 //                String url = getItem(position).getUrl();
 //                String time = getItem(position).getTime();
 //                String privacy = getItem(position).getPrivacy();
-//                String userID = getItem(position).getUserID();
-
+                String userID = getItem(position).getUserID();
+                holder.reply.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getApplicationContext(), ReplyActivity.class);
+                        intent.putExtra("userID", userID);
+                        intent.putExtra("question", question);
+                        intent.putExtra("postKey", postKey);
+                        startActivity(intent);
+                    }
+                });
             }
             @NonNull
             @Override
