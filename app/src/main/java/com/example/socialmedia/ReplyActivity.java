@@ -1,5 +1,6 @@
 package com.example.socialmedia;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,14 +22,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 public class ReplyActivity extends AppCompatActivity {
-
     private String userID, question, postKey, key;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference userReference, currentUserReference;
     private TextView nameTV, questionTV, replyTV;
     private RecyclerView recyclerView;
     private ImageView userImageView, imageViewQue;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +65,13 @@ public class ReplyActivity extends AppCompatActivity {
         replyTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                Intent intent = new Intent(getApplicationContext(), AnswerActivity.class);
+                intent.putExtra("u", userID);
+                intent.putExtra("p", postKey);
+//                        intent.putExtra("key", privacy);
+                startActivity(intent);
 
             }
         });

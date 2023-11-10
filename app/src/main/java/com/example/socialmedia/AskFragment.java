@@ -113,7 +113,7 @@ public class AskFragment extends Fragment {
                         intent.putExtra("userID", userID);
                         intent.putExtra("question", question);
                         intent.putExtra("postKey", postKey);
-                        intent.putExtra("key", privacy);
+//                        intent.putExtra("key", privacy);
                         startActivity(intent);
                     }
                 });
@@ -141,8 +141,8 @@ public class AskFragment extends Fragment {
                                         member.setUrl(url);
                                         member.setQuestion(question);
 
-                                        String id = favouriteListRef.push().getKey();
-                                        favouriteListRef.child(id).setValue(member);
+//                                        String id = favouriteListRef.push().getKey();
+                                        favouriteListRef.child(postKey).setValue(member);
                                         favouriteChecker = false;
                                     }
                                 }
