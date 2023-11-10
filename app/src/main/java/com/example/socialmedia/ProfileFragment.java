@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -25,8 +26,10 @@ import com.squareup.picasso.Picasso;
 
 public class ProfileFragment extends Fragment {
     private ImageView profileIMG;
+    private ImageButton menu;
     private TextView name, profession, bio, email, web;
-    private ImageButton updateProfile_IMG_BTN, menu;
+    private CardView updateProfile_IMG_BTN;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

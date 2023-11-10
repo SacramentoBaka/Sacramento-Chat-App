@@ -60,4 +60,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     // MultiDex
     implementation 'androidx.multidex:multidex:2.0.1'
+    // Scalable Size Unit
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+    // Round ImageView
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 }
