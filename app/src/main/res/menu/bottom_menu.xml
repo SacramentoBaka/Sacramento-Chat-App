@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/idMenuProfile"
-        android:title="Profile"
-        android:icon="@drawable/baseline_person_24"
+        android:id="@+id/idMenuHome"
+        android:title="Home"
+        android:icon="@drawable/baseline_home_24"
         app:showAsAction="always"/>
     <item
         android:id="@+id/idMenuAsk"
@@ -18,11 +18,8 @@
         android:icon="@drawable/baseline_queue_24"
         app:showAsAction="always"/>
     <item
-        android:id="@+id/idMenuHome"
-        android:title="Home"
-        android:icon="@drawable/baseline_home_24"
+        android:id="@+id/idMenuProfile"
+        android:title="Profile"
+        android:icon="@drawable/baseline_person_24"
         app:showAsAction="always"/>
-
-
-
 </menu>

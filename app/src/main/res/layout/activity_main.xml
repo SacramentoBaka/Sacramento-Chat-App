@@ -12,14 +12,17 @@
         android:layout_height="match_parent"
         android:layout_above="@id/idMainBottomNavigation"/>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <nl.joery.animatedbottombar.AnimatedBottomBar
         android:id="@+id/idMainBottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:itemTextColor="@color/black"
         android:layout_alignParentBottom="true"
-        android:background="@android:color/white"
-        app:itemIconTint="@android:color/black"
-        app:menu="@menu/bottom_menu"
-        android:focusableInTouchMode="true"/>
+        app:abb_indicatorAppearance="round"
+        app:abb_indicatorColor="@color/black"
+        app:abb_indicatorHeight="4dp"
+        app:abb_indicatorMargin="16dp"
+        app:abb_selectedIndex="0"
+        app:abb_selectedTabType="text"
+        app:abb_tabColorSelected="@color/black"
+        app:abb_tabs="@menu/bottom_menu" />
 </RelativeLayout>

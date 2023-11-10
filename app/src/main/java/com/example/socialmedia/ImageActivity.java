@@ -2,6 +2,7 @@ package com.example.socialmedia;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +24,7 @@ public class ImageActivity extends AppCompatActivity {
 
     private TextView name;
     private ImageView profileIMG;
-    private Button editBTN, deleteBTN;
+    private CardView editBTN, deleteBTN;
     private DocumentReference reference;
     private String url;
     private FirebaseFirestore db= FirebaseFirestore.getInstance();
@@ -45,12 +46,14 @@ public class ImageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                Toast.makeText(ImageActivity.this, "Edit Profile Photo", Toast.LENGTH_SHORT).show();
             }
         });
         deleteBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                Toast.makeText(ImageActivity.this, "Delete Profile Photo", Toast.LENGTH_SHORT).show();
             }
         });
     }
