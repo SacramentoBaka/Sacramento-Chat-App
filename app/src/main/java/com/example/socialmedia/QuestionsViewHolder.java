@@ -23,7 +23,7 @@ public class QuestionsViewHolder extends RecyclerView.ViewHolder {
 
     ImageView imageView;
     ImageButton imageButton;
-    TextView timeResult, nameResult, questionResult, userDelete;
+    TextView timeResult, nameResult, questionResult, userDelete, replyBTN;
     DatabaseReference favouriteDatabaseReference;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -40,6 +40,7 @@ public class QuestionsViewHolder extends RecyclerView.ViewHolder {
         nameResult = itemView.findViewById(R.id.idQuestionItemName);
         questionResult = itemView.findViewById(R.id.idQuestionItemQuestion);
         imageButton = itemView.findViewById(R.id.idQuestionItemIMGBTN);
+        replyBTN = itemView.findViewById(R.id.idQuestionItemReply);
 
         Picasso.get().load(url).into(imageView);
         timeResult.setText(time);

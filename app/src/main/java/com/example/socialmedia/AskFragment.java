@@ -106,6 +106,18 @@ public class AskFragment extends Fragment {
                 String privacy = getItem(position).getPrivacy();
                 String userID = getItem(position).getUserID();
 
+                holder.replyBTN.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getActivity(), ReplyActivity.class);
+                        intent.putExtra("userID", userID);
+                        intent.putExtra("question", question);
+                        intent.putExtra("postKey", postKey);
+                        intent.putExtra("key", privacy);
+                        startActivity(intent);
+                    }
+                });
+
                 holder.favouriteChecker(postKey);
                 holder.imageButton.setOnClickListener(new View.OnClickListener() {
                     @Override
