@@ -2,7 +2,6 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/transparent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
     android:layout_margin="5dp">
@@ -10,18 +9,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                app:cardCornerRadius="35dp"
-                android:layout_gravity="center_vertical"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:cardCornerRadius="25dp"
                 android:layout_marginEnd="15dp"
                 app:cardPreventCornerOverlap="false">
 
@@ -47,23 +45,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
+                android:fontFamily="sans-serif-condensed"
                 android:hint="Time"
-                android:textColor="@color/red"
+                android:textColor="@color/gray"
                 android:layout_gravity="end"/>
             <TextView
                 android:id="@+id/idRelatedItemName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
                 android:paddingStart="5dp"
-                android:textSize="10sp"
+                android:textSize="@dimen/_12ssp"
                 android:hint="Name"
                 android:textColor="@android:color/darker_gray" />
             <TextView
                 android:id="@+id/idRelatedItemQuestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
                 android:paddingStart="5dp"
-                android:textSize="15sp"
+                android:textSize="@dimen/_12ssp"
                 android:hint="Questions"
                 android:textColor="@color/black" />
 
@@ -79,9 +80,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:fontFamily="sans-serif-condensed"
                     android:textColor="@color/red"
-                    android:text="View Reply"
-                    android:textSize="15sp"
+                    android:text="View Replies"
+                    android:textSize="@dimen/_10ssp"
                     android:padding="5dp"/>
 
             </LinearLayout>

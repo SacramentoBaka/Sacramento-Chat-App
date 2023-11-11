@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,7 +15,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class BottomSheetAskFragment extends BottomSheetDialogFragment {
 
-    private CardView relatedCardView, userQuestionCardView;
+    private TextView relatedCardView, userQuestionCardView;
 
     @Nullable
     @Override

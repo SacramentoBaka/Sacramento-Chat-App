@@ -1,45 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/idBottomSheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/white"
+    android:orientation="vertical"
+    app:layout_behavior="com.google.android.material.bottom-sheet.BottomSheetBehavior">
 
-    <androidx.cardview.widget.CardView
+    <TextView
         android:id="@+id/idAskBottomSheetRelated"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:clickable="true">
+        android:drawablePadding="30dp"
+        android:fontFamily="sans-serif-condensed"
+        android:padding="10dp"
+        android:text="Related"
+        android:textColor="@color/red"
+        android:textSize="@dimen/_15ssp"
+        app:drawableStartCompat="@drawable/bookmark" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Related"
-            android:textSize="20sp"
-            android:textColor="@color/red"
-            android:drawablePadding="10dp"
-            android:padding="10dp"
-            app:drawableStartCompat="@drawable/bookmark" />
-
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
+    <TextView
         android:id="@+id/idAskBottomSheetUserQuestions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:clickable="true">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Your Questions"
-            android:textSize="20sp"
-            android:textColor="@color/red"
-            android:drawablePadding="10dp"
-            android:padding="10dp"
-            app:drawableStartCompat="@drawable/baseline_restore_24" />
-
-    </androidx.cardview.widget.CardView>
+        android:drawablePadding="30dp"
+        android:fontFamily="sans-serif-condensed"
+        android:padding="10dp"
+        android:text="Your Questions"
+        android:textColor="@color/red"
+        android:textSize="@dimen/_15ssp"
+        app:drawableStartCompat="@drawable/baseline_restore_24" />
 
 </LinearLayout>

@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="10dp"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    app:cardCornerRadius="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/_5sdp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 app:cardCornerRadius="35dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="15dp"
                 app:cardPreventCornerOverlap="false">
 
                 <ImageView
@@ -39,58 +38,90 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/idQuestionItemTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:hint="Time"
-                android:textColor="@color/red"
-                android:layout_gravity="end"/>
-            <TextView
-                android:id="@+id/idQuestionItemName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="5dp"
-                android:textSize="10sp"
-                android:hint="Name"
-                android:textColor="@android:color/darker_gray" />
-            <TextView
-                android:id="@+id/idQuestionItemQuestion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="5dp"
-                android:textSize="15sp"
-                android:hint="Questions"
-                android:textColor="@color/black" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/_3sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/idQuestionItemName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="sans-serif-condensed"
+                    android:hint="Name"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="@dimen/_10ssp" />
+
+                <TextView
+                    android:id="@+id/idQuestionItemTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="sans-serif-condensed"
+                    android:hint="Time"
+                    android:visibility="invisible"
+                    android:textSize="@dimen/_8ssp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray" />
+
+            <TextView
+                android:id="@+id/idQuestionItemQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:hint="Questions"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp" />
+
+            <View
+                android:id="@+id/viewSupporter"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                android:gravity="center_vertical|end">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/idQuestionItemReply"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_weight="1"
                     android:clickable="true"
-                    android:textColor="@color/red"
+                    android:fontFamily="sans-serif-condensed"
+                    android:padding="5dp"
                     android:text="Reply"
-                    android:textSize="15sp"
-                    android:padding="5dp"/>
+                    android:textAlignment="center"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/_10ssp" />
 
                 <ImageButton
-
                     android:id="@+id/idQuestionItemIMGBTN"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_turned_in_not_24"
+                    android:layout_gravity="end"
+                    android:background="@android:color/transparent"
                     android:padding="5dp"
-                    android:background="@android:color/transparent"/>
+                    android:src="@drawable/baseline_turned_in_not_24" />
 
             </LinearLayout>
 

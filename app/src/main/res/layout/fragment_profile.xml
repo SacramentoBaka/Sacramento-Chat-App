@@ -72,7 +72,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/white"
+                        android:background="@drawable/background_category_1"
                         android:gravity="center_horizontal"
                         android:orientation="vertical"
                         tools:ignore="UseCompoundDrawables">
@@ -93,12 +93,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
-                            android:textSize="15sp"
+                            android:textSize="@dimen/_12ssp"
                             android:layout_marginStart="@dimen/_30sdp"
                             android:text="Name"
-                            android:fontFamily="sans-serif-condensed-medium"
+                            android:fontFamily="sans-serif-condensed"
                             android:textAlignment="center" />
-
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -109,7 +108,7 @@
                 android:id="@+id/idProfileFragIMG"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
-                android:background="@color/white"
+                android:background="@drawable/background_icon"
                 app:cardCornerRadius="95dp"
                 app:cardElevation="@dimen/_5sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -122,6 +121,24 @@
                 app:riv_corner_radius="@dimen/_50sdp"
                 android:adjustViewBounds="true"/>
 
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/itemGreenLight"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="@dimen/_23sdp"
+                android:background="@drawable/background_icon"
+                android:padding="@dimen/_1sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/round_add_circle_24"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/idProfileFragFollowers"
+                app:layout_constraintHorizontal_bias="0.52"
+                app:layout_constraintStart_toStartOf="@id/idProfileFragIMG"
+                app:layout_constraintTop_toTopOf="@id/idProfileFragIMG"
+                app:layout_constraintVertical_bias="0.90"
+                app:riv_corner_radius="@dimen/_50sdp" />
+
             <TextView
                 android:id="@+id/idProfileFragFollowers"
                 android:layout_width="wrap_content"
@@ -129,15 +146,13 @@
                 android:fontFamily="sans-serif-condensed-medium"
                 android:gravity="center"
                 android:text="Followers"
-                android:drawablePadding="@dimen/_5sdp"
-                android:drawableStart="@drawable/baseline_people_24"
                 android:textSize="15sp"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@id/idProfileFragIMG"
                 app:layout_constraintRight_toLeftOf="@id/idProfileFragPost"
                 app:layout_constraintTop_toBottomOf="@id/backIMG"
-                app:layout_constraintVertical_bias="0.1" />
+                app:layout_constraintVertical_bias="0." />
 
             <TextView
                 android:id="@+id/idProfileFragPost"
@@ -146,8 +161,6 @@
                 android:fontFamily="sans-serif-condensed-medium"
                 android:gravity="center"
                 android:text="Posts"
-                android:drawablePadding="@dimen/_5sdp"
-                android:drawableStart="@drawable/baseline_add_photo_alternate_24"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -201,7 +214,7 @@
             android:fontFamily="sans-serif-condensed-medium"
             android:text="Primary Details"
             android:textColor="@color/black"
-            android:textSize="@dimen/_13sdp"
+            android:textSize="@dimen/_15ssp"
             android:paddingStart="@dimen/_10sdp"
             android:textAlignment="textStart"
             android:layout_height="wrap_content"/>
@@ -210,10 +223,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
             android:text="Email"
+            android:fontFamily="sans-serif-condensed-medium"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="10dp"
             android:textColor="@android:color/darker_gray"
-            android:textSize="15sp"
+            android:textSize="@dimen/_11ssp"
             android:textAlignment="textStart"/>
         <TextView
             android:id="@+id/idProfileFragEmail"
@@ -223,17 +237,18 @@
             android:paddingStart="@dimen/_10sdp"
             android:textAlignment="textStart"
             android:text="Email"
-            android:textSize="16sp"
+            android:textSize="@dimen/_12ssp"
             android:layout_height="wrap_content"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Bio"
+            android:fontFamily="sans-serif-condensed-medium"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="10dp"
             android:textColor="@android:color/darker_gray"
-            android:textSize="15sp"
+            android:textSize="@dimen/_11ssp"
             android:textAlignment="textStart"/>
         <TextView
             android:id="@+id/idProfileFragBio"
@@ -243,7 +258,7 @@
             android:textColor="@color/black"
             android:textAlignment="textStart"
             android:text="Bio"
-            android:textSize="14sp"
+            android:textSize="@dimen/_12ssp"
             android:layout_height="wrap_content"/>
 
         <TextView
@@ -251,10 +266,11 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:text="Web"
+            android:fontFamily="sans-serif-condensed-medium"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="10dp"
             android:textColor="@android:color/darker_gray"
-            android:textSize="15sp"
+            android:textSize="@dimen/_11ssp"
             android:textAlignment="textStart"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -270,7 +286,7 @@
                 android:textColor="@color/black"
                 android:textAlignment="textStart"
                 android:text="Web"
-                android:textSize="14sp"
+                android:textSize="@dimen/_12ssp"
                 android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/idSeeAll"
@@ -346,7 +362,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical|center_horizontal"
                     android:gravity="center"
-                    android:background="@color/white"
+                    android:background="@drawable/background_category_1"
                     android:orientation="horizontal"
                     tools:ignore="UseCompoundDrawables">
 
@@ -385,7 +401,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/white"
+                    android:background="@drawable/background_category_1"
                     android:layout_gravity="center_vertical|center_horizontal"
                     android:gravity="center"
                     android:orientation="horizontal"
@@ -429,7 +445,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical|center_horizontal"
                     android:gravity="center"
-                    android:background="@color/white"
+                    android:background="@drawable/background_category_1"
                     android:orientation="horizontal"
                     tools:ignore="UseCompoundDrawables">
 
@@ -469,7 +485,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white"
+                android:background="@drawable/background_category_1"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
                 android:orientation="vertical"

@@ -17,9 +17,9 @@
             android:layout_height="wrap_content">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                app:cardCornerRadius="35dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:cardCornerRadius="25dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="15dp"
                 app:cardPreventCornerOverlap="false">
@@ -47,22 +47,23 @@
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
                 android:hint="Time"
-                android:textColor="@color/red"
+                android:textColor="@color/gray"
                 android:layout_gravity="end"/>
+
             <TextView
                 android:id="@+id/idUserQItemName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="5dp"
-                android:textSize="10sp"
                 android:hint="Name"
-                android:textColor="@android:color/darker_gray" />
+                android:paddingStart="5dp"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/_12ssp" />
             <TextView
                 android:id="@+id/idUserQItemQuestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="5dp"
-                android:textSize="15sp"
+                android:textSize="12sp"
                 android:hint="Questions"
                 android:textColor="@color/black" />
 
