@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import androidx.cardview.widget.CardView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,7 +37,7 @@ public class BottomSheetMenu extends BottomSheetDialogFragment {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     DocumentReference reference;
-    CardView privacy, logout, delete;
+    TextView privacy, logout, delete;
     FirebaseAuth mAuth;
     DatabaseReference databaseReference;
     FirebaseUser mCurrentUser;
@@ -79,7 +81,6 @@ public class BottomSheetMenu extends BottomSheetDialogFragment {
         privacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(getActivity(), PrivacyActivity.class);
                 startActivity(intent);
             }

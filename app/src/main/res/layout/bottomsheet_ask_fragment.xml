@@ -1,35 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/idBottomSheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/background_content_bottom"
     android:orientation="vertical"
     app:layout_behavior="com.google.android.material.bottom-sheet.BottomSheetBehavior">
 
-    <TextView
-        android:id="@+id/idAskBottomSheetRelated"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawablePadding="30dp"
-        android:fontFamily="sans-serif-condensed"
-        android:padding="10dp"
-        android:text="Related"
-        android:textColor="@color/red"
-        android:textSize="@dimen/_15ssp"
-        app:drawableStartCompat="@drawable/bookmark" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/idAskBottomSheetUserQuestions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawablePadding="30dp"
-        android:fontFamily="sans-serif-condensed"
-        android:padding="10dp"
-        android:text="Your Questions"
-        android:textColor="@color/red"
-        android:textSize="@dimen/_15ssp"
-        app:drawableStartCompat="@drawable/baseline_restore_24" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="30dp"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="Choose"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_15ssp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#97AAA4AA" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/idAskBottomSheetRelated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="30dp"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="Related"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_14ssp"
+            app:drawableStartCompat="@drawable/bookmark" />
+
+        <TextView
+            android:id="@+id/idAskBottomSheetUserQuestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="30dp"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:text="Your Questions"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_14ssp"
+            app:drawableStartCompat="@drawable/baseline_restore_24" />
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

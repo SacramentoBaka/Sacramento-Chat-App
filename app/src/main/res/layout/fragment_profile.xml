@@ -82,7 +82,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
+                            android:textSize="@dimen/_14ssp"
                             android:layout_marginTop="10dp"
                             android:text="Name"
                             android:layout_marginStart="@dimen/_30sdp"
@@ -93,7 +93,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_12ssp"
+                            android:textSize="@dimen/_10ssp"
                             android:layout_marginStart="@dimen/_30sdp"
                             android:text="Name"
                             android:fontFamily="sans-serif-condensed"
@@ -214,7 +214,7 @@
             android:fontFamily="sans-serif-condensed-medium"
             android:text="Primary Details"
             android:textColor="@color/black"
-            android:textSize="@dimen/_15ssp"
+            android:textSize="@dimen/_14ssp"
             android:paddingStart="@dimen/_10sdp"
             android:textAlignment="textStart"
             android:layout_height="wrap_content"/>
@@ -526,7 +526,6 @@
             android:id="@+id/profileRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
     </LinearLayout>
 
 </ScrollView>

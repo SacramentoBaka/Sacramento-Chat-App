@@ -74,7 +74,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/gray" />
+                android:background="#60AAA4AA" />
 
             <TextView
                 android:id="@+id/idQuestionItemQuestion"
@@ -91,7 +91,7 @@
                 android:id="@+id/viewSupporter"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/gray" />
+                android:background="#60AAA4AA" />
 
             <LinearLayout
                 android:layout_width="match_parent"

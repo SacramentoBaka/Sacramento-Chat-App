@@ -3,71 +3,74 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="10dp"
-    android:layout_margin="5dp">
+    android:layout_marginTop="@dimen/_5sdp"
+    app:cardCornerRadius="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical">
+        <androidx.cardview.widget.CardView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:cardCornerRadius="20dp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/_5sdp"
+            app:cardPreventCornerOverlap="false">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:cardCornerRadius="25dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="15dp"
-                app:cardPreventCornerOverlap="false">
+            <ImageView
+                android:id="@+id/idAnswerItemIMG"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/baseline_person_24"
+                android:clickable="true"
+                android:scaleType="fitCenter" />
 
-                <ImageView
-                    android:id="@+id/idAnswerItemIMG"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/baseline_person_24"
-                    android:clickable="true"
-                    android:scaleType="fitCenter" />
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/idAnswerItemName"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="5dp"
-                android:textSize="10sp"
-                android:hint="Name"
-                android:textColor="@android:color/darker_gray" />
-            <TextView
-                android:id="@+id/idAnswer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="5dp"
-                android:textSize="15sp"
-                android:hint="Answer"
-                android:textColor="@color/black" />
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/idAnswerItemName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="@dimen/_8ssp"
+                    android:hint="Name"
+                    android:textColor="@android:color/darker_gray" />
+                <TextView
+                    android:id="@+id/idAnswerItemTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:textAlignment="viewEnd"
+                    android:hint="Time"
+                    android:textColor="@color/red" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/idAnswerItemTime"
-                android:layout_width="wrap_content"
+                android:id="@+id/idAnswer"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:layout_weight="1"
-                android:hint="Time"
-                android:padding="5dp"
-                android:textColor="@color/red" />
+                android:paddingStart="5dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:textSize="@dimen/_12ssp"
+                android:hint="Answer"
+                android:textColor="@color/black" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -80,21 +83,22 @@
                     android:clickable="true"
                     android:layout_weight="1"
                     android:textAlignment="center"
+                    android:fontFamily="sans-serif-condensed"
                     android:textColor="@color/red"
                     android:text="Agree"
-                    android:textSize="15sp"
-                    android:padding="5dp"/>
+                    android:textSize="@dimen/_10ssp" />
                 <TextView
                     android:id="@+id/idAnswerItemCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:textAlignment="center"
+                    android:textAlignment="viewEnd"
+                    android:paddingEnd="@dimen/_15sdp"
                     android:textColor="@color/red"
+                    android:fontFamily="sans-serif-condensed"
                     android:text="Agreed"
                     android:layout_weight="1"
-                    android:textSize="15sp"
-                    android:padding="5dp"/>
+                    android:textSize="@dimen/_10ssp" />
             </LinearLayout>
 
         </LinearLayout>
