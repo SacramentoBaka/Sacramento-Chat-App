@@ -35,7 +35,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.borjabravo:readmoretextview:2.1.0'
     //Firebase Dependency
     implementation 'com.google.firebase:firebase-database:20.3.0'
     implementation 'com.google.firebase:firebase-core:21.1.1'
@@ -45,16 +44,12 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:20.3.0'
     // FirebaseUI for Firebase Realtime Database
     implementation 'com.firebaseui:firebase-ui-database:8.0.2'
-
     // FirebaseUI for Cloud Firestore
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.2'
-
     // FirebaseUI for Firebase Auth
     implementation 'com.firebaseui:firebase-ui-auth:8.0.2'
-
     // FirebaseUI for Cloud Storage
     implementation 'com.firebaseui:firebase-ui-storage:8.0.2'
-
     implementation 'com.squareup.picasso:picasso:2.71828'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
@@ -68,18 +63,11 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
     //Bottom navigation bar
     implementation 'nl.joery.animatedbottombar:library:1.1.0'
-    // Exoplayer
+    // dependency for exoplayer
     implementation 'com.google.android.exoplayer:exoplayer:2.19.1'
-    // for core support in exoplayer.
     implementation 'com.google.android.exoplayer:exoplayer-core:2.19.1'
-    // for adding dash support in our exoplayer.
     implementation 'com.google.android.exoplayer:exoplayer-dash:2.19.1'
-    // for adding hls support in exoplayer.
     implementation 'com.google.android.exoplayer:exoplayer-hls:2.19.1'
-    // for smooth streaming of video in our exoplayer.
     implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:2.19.1'
-    // for generating default ui of exoplayer
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.19.1'
-
-
 }

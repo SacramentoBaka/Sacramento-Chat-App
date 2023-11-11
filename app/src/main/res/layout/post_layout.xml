@@ -49,8 +49,8 @@
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/imageProfile2"
-                    app:layout_constraintTop_toTopOf="@id/imageProfile2"
+                    app:layout_constraintStart_toStartOf="@id/id_image_profile"
+                    app:layout_constraintTop_toTopOf="@id/id_image_profile"
                     app:riv_corner_radius="@dimen/_50sdp" />
 
 
@@ -122,7 +122,7 @@
             <com.google.android.exoplayer2.ui.PlayerView
                 android:id="@+id/id_post_video_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_350sdp"
                 app:use_controller="true"
                 app:show_timeout="1000"
                 android:visibility="visible"
@@ -144,11 +144,13 @@
                 android:id="@+id/idLikeIMG"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_width="@dimen/_18sdp"
+                android:background="@android:color/transparent"
                 android:src="@drawable/round_favorite_border_24"
                 android:layout_height="@dimen/_18sdp" />
             <ImageButton
                 android:id="@+id/idCommentIMG"
                 android:layout_width="@dimen/_18sdp"
+                android:background="@android:color/transparent"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:src="@drawable/baseline_chat_24"
                 android:layout_height="@dimen/_18sdp" />
@@ -225,12 +227,7 @@
             android:text="Read More or Read Less"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="12sp"
-            app:colorClickableText="@color/teal_200"
-            app:trimCollapsedText="@string/read_more"
-            app:trimExpandedText="@string/read_less"
-            app:trimLength="25"
-            app:trimMode="trimModeLength" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/id_post_comments_list"

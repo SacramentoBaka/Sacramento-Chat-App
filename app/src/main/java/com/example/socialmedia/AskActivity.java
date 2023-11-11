@@ -84,13 +84,9 @@ public class AskActivity extends AppCompatActivity {
                 }else {
                     Toast.makeText(AskActivity.this, "Please ask a Question", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
-
-
     }
-
     @Override
     protected void onStart() {
         super.onStart();
