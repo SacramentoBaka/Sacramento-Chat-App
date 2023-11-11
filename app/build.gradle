@@ -35,6 +35,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.borjabravo:readmoretextview:2.1.0'
     //Firebase Dependency
     implementation 'com.google.firebase:firebase-database:20.3.0'
     implementation 'com.google.firebase:firebase-core:21.1.1'
@@ -67,4 +68,18 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
     //Bottom navigation bar
     implementation 'nl.joery.animatedbottombar:library:1.1.0'
+    // Exoplayer
+    implementation 'com.google.android.exoplayer:exoplayer:2.19.1'
+    // for core support in exoplayer.
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.19.1'
+    // for adding dash support in our exoplayer.
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.19.1'
+    // for adding hls support in exoplayer.
+    implementation 'com.google.android.exoplayer:exoplayer-hls:2.19.1'
+    // for smooth streaming of video in our exoplayer.
+    implementation 'com.google.android.exoplayer:exoplayer-smoothstreaming:2.19.1'
+    // for generating default ui of exoplayer
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.19.1'
+
+
 }
