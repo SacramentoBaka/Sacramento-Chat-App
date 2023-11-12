@@ -53,7 +53,6 @@
                     app:layout_constraintTop_toTopOf="@id/id_image_profile"
                     app:riv_corner_radius="@dimen/_50sdp" />
 
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
@@ -135,7 +134,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="15dp"
             android:elevation="10dp"
             android:orientation="horizontal">
@@ -143,70 +142,52 @@
             <ImageButton
                 android:id="@+id/idLikeIMG"
                 android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_width="@dimen/_18sdp"
+                android:layout_width="@dimen/_24sdp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/round_favorite_border_24"
-                android:layout_height="@dimen/_18sdp" />
+                android:layout_height="@dimen/_24sdp" />
             <ImageButton
                 android:id="@+id/idCommentIMG"
-                android:layout_width="@dimen/_18sdp"
+                android:layout_width="@dimen/_24sdp"
                 android:background="@android:color/transparent"
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:src="@drawable/baseline_chat_24"
-                android:layout_height="@dimen/_18sdp" />
+                android:layout_height="@dimen/_24sdp" />
 
-            <TextView
-                android:id="@+id/idLikes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:gravity="start"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:text="1,000,000 likes"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_10sdp"
-                android:visibility="visible"
-                tools:ignore="RtlSymmetry" />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
+            <ImageButton
+                android:layout_width="@dimen/_24sdp"
                 android:layout_weight="1"
-                android:layout_marginTop="@dimen/_5sdp" />
+                android:background="@android:color/transparent"
+                android:layout_height="@dimen/_24sdp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:textAlignment="center"
                 android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:text="share"
+                android:layout_gravity="center_vertical"
+                android:text="Save"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="@dimen/_12sdp"
+                android:drawableStart="@drawable/bookmark"
+                android:drawablePadding="@dimen/_5sdp"
                 android:visibility="visible"
                 tools:ignore="RtlSymmetry" />
-
-            <ImageView
-                android:id="@+id/idShareIMG"
-                android:layout_width="@dimen/_18sdp"
-                android:layout_height="@dimen/_18sdp" />
 
         </LinearLayout>
 
         <TextView
-            android:id="@+id/id_post_title_list"
+            android:id="@+id/id_post_description_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="2dp"
             android:paddingStart="15dp"
-            android:text="Title"
-            android:textAlignment="center"
+            android:paddingEnd="15dp"
+            android:text="Read More or Read Less"
+            android:textAlignment="viewStart"
             android:textColor="@color/black"
-            android:textSize="15sp"
-            tools:ignore="RtlSymmetry" />
-
+            android:textSize="@dimen/_13sdp" />
         <View
             android:id="@+id/viewTopSupporter"
             android:layout_width="match_parent"
@@ -214,34 +195,39 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginStart="@dimen/_15sdp"
             android:layout_marginEnd="@dimen/_15sdp"
-            android:background="@color/black" />
+            android:background="#80000000" />
 
-        <TextView
-            android:id="@+id/id_post_description_list"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:padding="5dp"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:text="Read More or Read Less"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/id_post_comments_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
-            android:padding="5dp"
-            android:paddingStart="15dp"
-            android:paddingEnd="30dp"
-            android:text="comments"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_7ssp"
-            tools:ignore="SmallSp" />
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/idLikes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="15dp"
+                android:fontFamily="sans-serif-medium"
+                android:textAlignment="center"
+                android:paddingEnd="10dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                android:visibility="visible"
+                tools:ignore="RtlSymmetry" />
+            <TextView
+                android:id="@+id/id_post_comments_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:paddingStart="15dp"
+                android:paddingEnd="30dp"
+                android:text="View all comments"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                tools:ignore="SmallSp" />
+        </LinearLayout>
 
         <View
             android:id="@+id/viewBottomSupporter"

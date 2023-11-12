@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.SimpleExoPlayer;
-
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,8 +34,9 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     public PostViewHolder(@NonNull View itemView) {
         super(itemView);
     }
+
     public void setPost(FragmentActivity activity, String name, String url, String postUri, String time,
-                        String userID, String type, String description){
+                        String userID, String type, String description) {
 
         profileImage = itemView.findViewById(R.id.id_image_profile);
         postImage = itemView.findViewById(R.id.id_post_image_list);
@@ -52,7 +52,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         SimpleExoPlayer simpleExoPlayer;
         PlayerView playerView = itemView.findViewById(R.id.id_post_video_list);
 
-        if(type.equals("iv")){
+        if (type.equals("iv")) {
             Picasso.get().load(url).into(profileImage);
             Picasso.get().load(postUri).into(postImage);
             descriptionTV.setText(description);
@@ -75,11 +75,12 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
                 simpleExoPlayer.prepare();
                 simpleExoPlayer.setPlayWhenReady(false);
 
-            }catch (Exception e){
+            } catch (Exception e) {
                 Toast.makeText(activity, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
     }
+
     public void likeChecker(String postKey) {
 
         likeBTN = itemView.findViewById(R.id.idLikeIMG);
@@ -90,16 +91,18 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                if(snapshot.child(postKey).hasChild(userID)){
+                if (snapshot.child(postKey).hasChild(userID)) {
                     likeBTN.setImageResource(R.drawable.round_favorite_24);
                     likeCount = (int) snapshot.child(postKey).getChildrenCount();
-                    likeTV.setText(Integer.toString(likeCount)+ " Likes");
-                }else {
+                    likeTV.setText(Integer.toString(likeCount) + " likes");
+                } else {
                     likeBTN.setImageResource(R.drawable.round_favorite_border_24);
                     likeCount = (int) snapshot.child(postKey).getChildrenCount();
-                    likeTV.setText(Integer.toString(likeCount)+ " Likes");
+                    likeTV.setText(Integer.toString(likeCount) + " likes");
                 }
+
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

@@ -32,7 +32,7 @@
                     app:cardPreventCornerOverlap="false">
 
                     <ImageView
-                        android:id="@+id/idAskFragProfileIMG"
+                        android:id="@+id/idHomeFragProfileIMG"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/baseline_person_24"
@@ -57,11 +57,12 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="right|center_vertical"
                     android:text="create post"
+                    android:elevation="@dimen/_8sdp"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif-condensed"
                     android:textColor="@color/red"
-                    android:textSize="@dimen/_8ssp"
-                    android:layout_margin="5dp"
+                    android:textSize="@dimen/_9ssp"
+                    android:layout_margin="@dimen/_5sdp"
                     android:background="@android:color/transparent" />
 
             </androidx.cardview.widget.CardView>
@@ -71,8 +72,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/idPostRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="@dimen/_5sdp"/>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
