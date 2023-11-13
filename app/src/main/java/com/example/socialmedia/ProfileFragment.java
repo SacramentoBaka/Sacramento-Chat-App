@@ -25,10 +25,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 public class ProfileFragment extends Fragment {
-    private ImageView profileIMG;
+    private ImageView profileIMG, profileIMG2;
     private ImageButton menu;
     private TextView name, profession, bio, email, web;
-    private CardView updateProfile_IMG_BTN;
+    private CardView updateProfile_IMG_BTN, profileToPost;
 
 
     @Override
@@ -37,18 +37,27 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         profileIMG = view.findViewById(R.id.idProfileFragIMG);
+        profileIMG2 = view.findViewById(R.id.idProfileFragIMG2);
         name = view.findViewById(R.id.idProfileFragName);
         profession = view.findViewById(R.id.idProfileFragProf);
         bio = view.findViewById(R.id.idProfileFragBio);
         email = view.findViewById(R.id.idProfileFragEmail);
         web = view.findViewById(R.id.idProfileFragWeb);
         updateProfile_IMG_BTN = view.findViewById(R.id.idProfileFragEdit);
+        profileToPost = view.findViewById(R.id.idProfileToAddPost);
         menu = view.findViewById(R.id.idProfileFragMenu);
 
         profileIMG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ImageActivity.class);
+                startActivity(intent);
+            }
+        });
+        profileToPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), PostActivity.class);
                 startActivity(intent);
             }
         });
@@ -92,6 +101,7 @@ public class ProfileFragment extends Fragment {
                             String url = task.getResult().getString("url");
 
                             Picasso.get().load(url).into(profileIMG);
+                            Picasso.get().load(url).into(profileIMG2);
                             name.setText(nameResults);
                             email.setText(emailResults);
                             web.setText(webResults);

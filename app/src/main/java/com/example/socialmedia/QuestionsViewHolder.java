@@ -79,6 +79,7 @@ public class QuestionsViewHolder extends RecyclerView.ViewHolder {
         TextView userNameTV = itemView.findViewById(R.id.idUserQItemName);
         TextView userQuestionTV = itemView.findViewById(R.id.idUserQItemQuestion);
         userDelete = itemView.findViewById(R.id.idUserQItemDelete);
+        viewReply = itemView.findViewById(R.id.idUserQItemView);
 
         Picasso.get().load(url).into(userImage);
         userTimeTV.setText(time);
