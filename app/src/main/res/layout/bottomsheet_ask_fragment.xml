@@ -21,7 +21,8 @@
             android:fontFamily="sans-serif-condensed"
             android:padding="10dp"
             android:text="Choose"
-            android:textColor="@color/red"
+            android:textStyle="bold"
+            android:textColor="@color/gray"
             android:textSize="@dimen/_15ssp" />
         <View
             android:layout_width="match_parent"
@@ -35,8 +36,8 @@
             android:drawablePadding="30dp"
             android:fontFamily="sans-serif-condensed"
             android:padding="10dp"
-            android:text="Related"
-            android:textColor="@color/red"
+            android:text="Saved Questions"
+            android:textColor="@color/gray"
             android:textSize="@dimen/_14ssp"
             app:drawableStartCompat="@drawable/bookmark" />
 
@@ -48,7 +49,7 @@
             android:fontFamily="sans-serif-condensed"
             android:padding="10dp"
             android:text="Your Questions"
-            android:textColor="@color/red"
+            android:textColor="@color/gray"
             android:textSize="@dimen/_14ssp"
             app:drawableStartCompat="@drawable/baseline_restore_24" />
 

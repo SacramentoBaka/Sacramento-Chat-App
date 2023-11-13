@@ -27,13 +27,14 @@ import com.squareup.picasso.Picasso;
 public class PostViewHolder extends RecyclerView.ViewHolder {
 
     ImageView profileImage, postImage;
-    TextView nameTV, descriptionTV, likeTV, commentsTV, timeTV, timeAgoTV, nameProfileTV;
-    ImageView likeBTN, commentBTN, menuOptionsBTN;
-    DatabaseReference likesRef;
+    TextView nameTV, descriptionTV, likeTV, favouriteTV, separatorTV, commentsTV, timeTV, timeAgoTV, nameProfileTV;
+    ImageView likeBTN, commentBTN, menuOptionsBTN, favouriteBTN;
+    DatabaseReference likesRef, favouriteRef;
     private PostMember postMember;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     int likeCount;
+    int favouriteCount;
 
     public PostViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -51,7 +52,10 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         descriptionTV = itemView.findViewById(R.id.id_post_description_list);
         commentsTV = itemView.findViewById(R.id.id_post_comments_list);
         likeTV = itemView.findViewById(R.id.idLikes);
+        favouriteTV = itemView.findViewById(R.id.idFavouriteTV);
+        separatorTV = itemView.findViewById(R.id.idFavouriteTVSeparator);
         likeBTN = itemView.findViewById(R.id.idLikeIMG);
+        favouriteBTN = itemView.findViewById(R.id.idFavouriteIMG);
 //        commentBTN = itemView.findViewById(R.id.idCommentIMG);
         menuOptionsBTN = itemView.findViewById(R.id.id_post_moreButton);
 
@@ -112,6 +116,33 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
             }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }   public void favouriteChecker(String postKey) {
+
+        favouriteBTN = itemView.findViewById(R.id.idFavouriteIMG);
+        favouriteRef = database.getReference("Post Favourites");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userID = user.getUid();
+        favouriteRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (snapshot.child(postKey).hasChild(userID)) {
+                    favouriteBTN.setImageResource(R.drawable.outline_star_24);
+                    favouriteCount = (int) snapshot.child(postKey).getChildrenCount();
+                    favouriteTV.setText(Integer.toString(favouriteCount) + " Favourite");
+                    separatorTV.setVisibility(View.VISIBLE);
+                } else {
+                    favouriteBTN.setImageResource(R.drawable.outline_star_border_24);
+                    favouriteCount = (int) snapshot.child(postKey).getChildrenCount();
+                    favouriteTV.setText(Integer.toString(favouriteCount) + " Favourite");
+                    separatorTV.setVisibility(View.INVISIBLE);
+                }
+            }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

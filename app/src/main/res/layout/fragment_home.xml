@@ -54,7 +54,7 @@
                     android:textStyle="bold"
                     android:background="@drawable/custom_post_background"
                     android:fontFamily="sans-serif"
-                    android:textColor="#CEFF5722"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/_9ssp" />
 
             </androidx.cardview.widget.CardView>

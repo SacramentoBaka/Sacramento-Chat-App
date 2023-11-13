@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                         replace(new HomeFragment());
                         break;
                     case R.id.idMenuAsk:
-                        Toast.makeText(getApplicationContext(), "Ask", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Questions", Toast.LENGTH_SHORT).show();
                         replace(new AskFragment());
                         break;
                     case R.id.idMenuQueue:

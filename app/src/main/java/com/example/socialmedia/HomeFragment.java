@@ -49,8 +49,9 @@ public class HomeFragment extends Fragment {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DocumentReference documentReference;
     private ImageView profileIMG;
-    private DatabaseReference reference, likeRef, db1, db2, db3;
+    private DatabaseReference reference, likeRef, favouriteRef, db1, db2, db3;
     private Boolean likeChecker = false;
+    private Boolean favouriteChecker = false;
     private FirebaseRecyclerAdapter<PostMember, PostViewHolder> adapter;
     private FirebaseRecyclerOptions<PostMember> options;
     private String currentUserID;
@@ -67,6 +68,7 @@ public class HomeFragment extends Fragment {
         documentReference = db.collection("user").document(currentUserID);
         reference = database.getReference("All Posts");
         likeRef = database.getReference("Post Likes");
+        favouriteRef = database.getReference("Post Favourites");
         db1 = database.getReference("All Images").child(currentUserID);
         db2 = database.getReference("All Videos").child(currentUserID);
         db3 = database.getReference("All Posts");
@@ -261,6 +263,36 @@ public class HomeFragment extends Fragment {
                                         likeRef.child(postKey).child(currentUserID).setValue(true);
 
                                         likeChecker = false;
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                });
+                holder.favouriteChecker(postKey);
+
+                holder.favouriteBTN.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        favouriteChecker = true;
+                        favouriteRef.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                if (favouriteChecker.equals(true)) {
+                                    if (snapshot.child(postKey).hasChild(currentUserID)) {
+                                        favouriteRef.child(postKey).child(currentUserID).removeValue();
+//                                        delete(time);
+                                        favouriteChecker = false;
+                                    } else {
+                                        favouriteRef.child(postKey).child(currentUserID).setValue(true);
+
+                                        favouriteChecker = false;
                                     }
                                 }
                             }

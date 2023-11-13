@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,8 +30,8 @@
                     android:layout_width="@dimen/_35sdp"
                     android:layout_height="@dimen/_35sdp"
                     android:scaleType="centerCrop"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:riv_oval="true" />
@@ -90,12 +90,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:visibility="invisible"
                 android:fontFamily="sans-serif"
                 android:gravity="start"
                 android:text="Time"
                 android:textColor="#9C000000"
-                android:textSize="11sp" />
+                android:textSize="11sp"
+                android:visibility="invisible" />
 
             <ImageButton
                 android:id="@+id/id_post_moreButton"
@@ -111,28 +111,28 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:background="@drawable/custom_post_background"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_post_background">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 app:cardPreventCornerOverlap="false"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/id_post_image_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="visible"
-                    android:scaleType="fitXY"
                     android:adjustViewBounds="true"
-                    tools:visibility="visible"
-                    tools:ignore="MissingConstraints" />
+                    android:scaleType="fitXY"
+                    android:visibility="visible"
+                    tools:ignore="MissingConstraints"
+                    tools:visibility="visible" />
 
             </androidx.cardview.widget.CardView>
 
@@ -140,16 +140,16 @@
                 android:id="@+id/id_post_video_list"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:resize_mode="fixed_width"
                 app:show_buffering="always"
                 app:show_subtitle_button="true"
-                app:use_controller="true"
                 app:show_timeout="1000"
-                android:visibility="gone"
-                app:resize_mode="fixed_width"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:use_controller="true" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -163,43 +163,80 @@
 
             <ImageButton
                 android:id="@+id/idLikeIMG"
-                android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_24sdp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/round_favorite_border_24"
-                android:layout_height="@dimen/_24sdp" />
+                android:src="@drawable/round_favorite_border_24" />
+
+            <ImageButton
+                android:id="@+id/idFavouriteIMG"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/outline_star_border_24" />
 
             <TextView
                 android:id="@+id/idLikes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:paddingStart="5dp"
                 android:fontFamily="sans-serif"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:text="likes"
                 android:textAlignment="center"
-                android:paddingEnd="10dp"
-                android:textStyle="bold"
                 android:textColor="#9C000000"
                 android:textSize="@dimen/_10ssp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/idFavouriteTVSeparator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:fontFamily="sans-serif"
+                android:text="."
+                android:paddingBottom="@dimen/_10sdp"
+                android:textColor="#CC9200"
+                android:textSize="@dimen/_15ssp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/idFavouriteTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:text="Favourite"
+                android:textAlignment="center"
+                android:textColor="#9C000000"
+                android:textSize="@dimen/_10ssp"
+                android:textStyle="bold"
                 android:visibility="visible"
                 tools:ignore="RtlSymmetry" />
 
             <ImageButton
                 android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
                 android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:layout_height="@dimen/_24sdp" />
+                android:background="@android:color/transparent" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:paddingStart="10dp"
                 android:layout_gravity="center_vertical"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp"
                 android:drawableStart="@drawable/round_bookmark"
                 android:drawablePadding="@dimen/_5sdp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:paddingStart="10dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
                 android:visibility="visible"
                 tools:ignore="RtlSymmetry" />
 
@@ -217,12 +254,13 @@
             android:textAlignment="viewStart"
             android:textColor="@color/black"
             android:textSize="@dimen/_13sdp" />
+
         <View
             android:id="@+id/viewTopSupporter"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:background="#8BFDB29A" />
 
@@ -231,6 +269,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
             android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/id_post_comments_list"
                 android:layout_width="wrap_content"
@@ -238,12 +277,13 @@
                 android:fontFamily="sans-serif"
                 android:paddingStart="15dp"
                 android:paddingEnd="30dp"
-                android:textStyle="bold"
                 android:text="View all comments"
                 android:textAlignment="viewEnd"
                 android:textColor="#9C000000"
                 android:textSize="@dimen/_10ssp"
+                android:textStyle="bold"
                 tools:ignore="SmallSp" />
+
             <TextView
                 android:id="@+id/id_post_time_ago"
                 android:layout_width="match_parent"
@@ -251,11 +291,11 @@
                 android:fontFamily="sans-serif"
                 android:paddingStart="15dp"
                 android:paddingEnd="30dp"
-                android:textStyle="bold"
                 android:text="time ago"
                 android:textAlignment="viewEnd"
                 android:textColor="#9C000000"
                 android:textSize="@dimen/_10ssp"
+                android:textStyle="bold"
                 tools:ignore="SmallSp" />
         </LinearLayout>
 
