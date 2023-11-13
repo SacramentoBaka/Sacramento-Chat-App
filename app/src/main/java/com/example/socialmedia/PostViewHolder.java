@@ -1,6 +1,7 @@
 package com.example.socialmedia;
 
 import android.net.Uri;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.ui.PlayerView;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,9 +27,11 @@ import com.squareup.picasso.Picasso;
 public class PostViewHolder extends RecyclerView.ViewHolder {
 
     ImageView profileImage, postImage;
-    TextView nameTV, descriptionTV, likeTV, commentsTV, timeTV, nameProfileTV;
-    ImageView likeBTN, commentBTN, moreBTN;
+    TextView nameTV, descriptionTV, likeTV, commentsTV, timeTV, timeAgoTV, nameProfileTV;
+    ImageView likeBTN, commentBTN, menuOptionsBTN;
     DatabaseReference likesRef;
+    private PostMember postMember;
+
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     int likeCount;
 
@@ -38,19 +42,23 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     public void setPost(FragmentActivity activity, String name, String url, String postUri, String time,
                         String userID, String type, String description) {
 
+        postMember = new PostMember();
         profileImage = itemView.findViewById(R.id.id_image_profile);
         postImage = itemView.findViewById(R.id.id_post_image_list);
         nameProfileTV = itemView.findViewById(R.id.id_post_username);
         timeTV = itemView.findViewById(R.id.id_post_time);
+        timeAgoTV = itemView.findViewById(R.id.id_post_time_ago);
         descriptionTV = itemView.findViewById(R.id.id_post_description_list);
         commentsTV = itemView.findViewById(R.id.id_post_comments_list);
         likeTV = itemView.findViewById(R.id.idLikes);
         likeBTN = itemView.findViewById(R.id.idLikeIMG);
-        commentBTN = itemView.findViewById(R.id.idCommentIMG);
-        moreBTN = itemView.findViewById(R.id.id_post_moreButton);
+//        commentBTN = itemView.findViewById(R.id.idCommentIMG);
+        menuOptionsBTN = itemView.findViewById(R.id.id_post_moreButton);
+
 
         SimpleExoPlayer simpleExoPlayer;
         PlayerView playerView = itemView.findViewById(R.id.id_post_video_list);
+        // Time Ago
 
         if (type.equals("iv")) {
             Picasso.get().load(url).into(profileImage);
@@ -61,6 +69,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
             playerView.setVisibility(View.INVISIBLE);
         } else if (type.equals("vv")) {
             postImage.setVisibility(View.INVISIBLE);
+            playerView.setVisibility(View.VISIBLE);
             Picasso.get().load(url).into(profileImage);
             descriptionTV.setText(description);
             timeTV.setText(time);

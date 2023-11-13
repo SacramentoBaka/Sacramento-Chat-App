@@ -9,13 +9,13 @@
         app:showAsAction="always"/>
     <item
         android:id="@+id/idMenuAsk"
-        android:title="Ask"
-        android:icon="@drawable/baseline_rate_review_24"
+        android:title="Questions"
+        android:icon="@drawable/baseline_question_answer_24"
         app:showAsAction="always"/>
     <item
         android:id="@+id/idMenuQueue"
-        android:title="Post"
-        android:icon="@drawable/baseline_queue_24"
+        android:title="People"
+        android:icon="@drawable/baseline_people"
         app:showAsAction="always"/>
     <item
         android:id="@+id/idMenuProfile"

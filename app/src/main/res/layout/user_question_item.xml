@@ -3,25 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="10dp"
-    android:layout_margin="5dp">
+    app:cardCornerRadius="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_5sdp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:cardCornerRadius="25dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginEnd="15dp"
                 app:cardPreventCornerOverlap="false">
 
                 <ImageView
@@ -41,29 +39,37 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/idUserQItemTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:hint="Time"
-                android:textColor="@color/gray"
-                android:layout_gravity="end"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/idUserQItemName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Name"
+                    android:layout_weight="1"
+                    android:paddingStart="5dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp" />
+                <TextView
+                    android:id="@+id/idUserQItemTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:hint="Time"
+                    android:textColor="@color/gray"
+                    android:layout_gravity="end"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/idUserQItemName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Name"
-                android:paddingStart="5dp"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="@dimen/_12ssp" />
+
             <TextView
                 android:id="@+id/idUserQItemQuestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="5dp"
-                android:textSize="12sp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:textSize="@dimen/_12ssp"
                 android:hint="Questions"
                 android:textColor="@color/black" />
 
@@ -98,7 +104,7 @@
                     android:fontFamily="sans-serif-condensed"
                     android:padding="5dp"
                     android:text="Delete"
-                    android:textAlignment="center"
+                    android:textAlignment="viewEnd"
                     android:textColor="@color/red"
                     android:textSize="@dimen/_10ssp" />
 

@@ -51,7 +51,7 @@
                     android:fontFamily="sans-serif-condensed"
                     android:textSize="@dimen/_10ssp"
                     android:hint="Name"
-                    android:textColor="@android:color/darker_gray" />
+                    android:textColor="@color/black" />
                 <TextView
                     android:id="@+id/idRelatedItemTime"
                     android:layout_width="wrap_content"

@@ -56,7 +56,7 @@
                     android:layout_gravity="center_vertical"
                     android:fontFamily="sans-serif-condensed"
                     android:hint="Name"
-                    android:textColor="@android:color/darker_gray"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp" />
 
                 <TextView

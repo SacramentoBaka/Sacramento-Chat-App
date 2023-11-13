@@ -23,7 +23,7 @@ public class QuestionsViewHolder extends RecyclerView.ViewHolder {
 
     ImageView imageView;
     ImageButton imageButton;
-    TextView timeResult, nameResult, questionResult, userDelete, replyBTN, reply;
+    TextView timeResult, nameResult, questionResult, userDelete, replyBTN, reply, viewReply;
     DatabaseReference favouriteDatabaseReference;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 

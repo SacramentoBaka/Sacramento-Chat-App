@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_10sdp"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/idPostOptionDownload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Download"
+        android:textSize="@dimen/_14ssp"
+        android:clickable="true"
+        android:padding="@dimen/_4sdp"
+        android:textColor="@android:color/black"/>
+    <TextView
+        android:id="@+id/idPostOptionShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Share"
+        android:textSize="@dimen/_14ssp"
+        android:clickable="true"
+        android:padding="@dimen/_4sdp"
+        android:textColor="@android:color/black"/>
+    <TextView
+        android:id="@+id/idPostOptionDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:visibility="gone"
+        android:textSize="@dimen/_14ssp"
+        android:clickable="true"
+        android:padding="@dimen/_4sdp"
+        android:textColor="@android:color/black"/>
+    <TextView
+        android:id="@+id/idPostOptionCopy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Copy Link"
+        android:textSize="@dimen/_14ssp"
+        android:clickable="true"
+        android:padding="@dimen/_4sdp"
+        android:textColor="@android:color/black"/>
+
+</LinearLayout>

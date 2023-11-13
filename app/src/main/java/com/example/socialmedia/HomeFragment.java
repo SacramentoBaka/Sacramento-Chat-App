@@ -1,13 +1,20 @@
 package com.example.socialmedia;
 
+import android.app.DownloadManager;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,12 +26,14 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -34,17 +43,18 @@ import com.squareup.picasso.Picasso;
 public class HomeFragment extends Fragment {
 
     private Context myContext;
-    private Button createPost;
+    private TextView createPost;
     private RecyclerView recyclerView;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DocumentReference documentReference;
     private ImageView profileIMG;
-    private DatabaseReference reference, likeRef;
+    private DatabaseReference reference, likeRef, db1, db2, db3;
     private Boolean likeChecker = false;
     private FirebaseRecyclerAdapter<PostMember, PostViewHolder> adapter;
     private FirebaseRecyclerOptions<PostMember> options;
     private String currentUserID;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,6 +67,9 @@ public class HomeFragment extends Fragment {
         documentReference = db.collection("user").document(currentUserID);
         reference = database.getReference("All Posts");
         likeRef = database.getReference("Post Likes");
+        db1 = database.getReference("All Images").child(currentUserID);
+        db2 = database.getReference("All Videos").child(currentUserID);
+        db3 = database.getReference("All Posts");
         recyclerView = view.findViewById(R.id.idPostRecyclerView);
         profileIMG = view.findViewById(R.id.idHomeFragProfileIMG);
         recyclerView.setHasFixedSize(false);
@@ -101,15 +114,136 @@ public class HomeFragment extends Fragment {
                 String currentUserID = user.getUid();
                 final String postKey = getRef(position).getKey();
 
-//                String question = getItem(position).getQuestion();
-//                String name = getItem(position).getName();
-//                String url = getItem(position).getUrl();
-//                String time = getItem(position).getTime();
-//                String privacy = getItem(position).getPrivacy();
-//                String userID = getItem(position).getUserID();
 
+                String postUrl = getItem(position).getPostUri();
+                String name = getItem(position).getName();
+                String url = getItem(position).getUrl();
+                String time = getItem(position).getTime();
+                String type = getItem(position).getType();
+                String userID = getItem(position).getUserID();
+
+
+                holder.menuOptionsBTN.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        PopupMenu popupMenu = new PopupMenu(getActivity(), view);
+                        popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
+                        popupMenu.setOnMenuItemClickListener(menuItem -> {
+                            switch (menuItem.getItemId()) {
+
+                                case R.id.popup_download:
+
+                                    if(type.equals("iv")){
+
+                                        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(postUrl));
+                                        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI |
+                                                DownloadManager.Request.NETWORK_MOBILE);
+                                        request.setTitle("Download");
+                                        request.setDescription("Downloading image...");
+                                        request.allowScanningByMediaScanner();
+                                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                                        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, name+System.currentTimeMillis()+
+                                                ".jpg");
+                                        DownloadManager manager = (DownloadManager)getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
+                                        manager.enqueue(request);
+                                        Toast.makeText(myContext, name + " your Post Deleted Successfully", Toast.LENGTH_SHORT).show();
+
+                                    } else if (type.equals("vv")) {
+                                        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(postUrl));
+                                        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI |
+                                                DownloadManager.Request.NETWORK_MOBILE);
+                                        request.setTitle("Download");
+                                        request.setDescription("Downloading video...");
+                                        request.allowScanningByMediaScanner();
+                                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                                        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, name+System.currentTimeMillis()+
+                                                ".mp4");
+                                        DownloadManager manager = (DownloadManager)getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
+                                        manager.enqueue(request);
+                                        Toast.makeText(myContext, name + "Downloaded Successfully", Toast.LENGTH_SHORT).show();
+
+                                    }
+
+                                    Toast.makeText(getActivity(), "Downloading", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case R.id.popup_share:
+
+                                    String shareText = name + " from Chat App" + "\n" + "\n" + postUrl;
+                                    Intent intent = new Intent(Intent.ACTION_SEND);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    intent.putExtra(Intent.EXTRA_TEXT, shareText);
+                                    intent.setType("text/plain");
+                                    startActivity(intent.createChooser(intent, "Share via"));
+
+                                    Toast.makeText(getActivity(), "Sharing", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case R.id.popup_delete:
+                                    if(userID.equals(currentUserID)){
+                                        Query query = db1.orderByChild("time").equalTo(time);
+                                        query.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                                                    dataSnapshot.getRef().removeValue();
+                                                    Toast.makeText(myContext, name + " your post deleted successfully", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+                                        Query query2 = db2.orderByChild("time").equalTo(time);
+                                        query2.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                                                    dataSnapshot.getRef().removeValue();
+                                                }
+                                            }
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+                                        Query query3 = db3.orderByChild("time").equalTo(time);
+                                        query3.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                                                    dataSnapshot.getRef().removeValue();
+                                                }
+                                            }
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+                                        Toast.makeText(myContext, name + " your post deleted successfully", Toast.LENGTH_SHORT).show();
+                                    }else {
+
+                                        Toast.makeText(getActivity(), "Not allowed to delete this post", Toast.LENGTH_SHORT).show();
+                                    }
+                                    break;
+                                case R.id.popup_copy_link:
+
+                                    ClipboardManager clipManager = (ClipboardManager)getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                                    ClipData clipData = ClipData.newPlainText("String", postUrl);
+                                    clipManager.setPrimaryClip(clipData);
+                                    clipData.getDescription();
+
+                                    Toast.makeText(getActivity(), "Link Copied", Toast.LENGTH_SHORT).show();
+                                    break;
+                            }
+                            return false;
+                        });
+                        popupMenu.show();
+                    }
+                });
 
                 holder.likeChecker(postKey);
+
                 holder.likeBTN.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -154,7 +288,6 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
     }
-
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);

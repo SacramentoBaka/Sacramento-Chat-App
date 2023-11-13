@@ -10,6 +10,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.text.format.DateUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -23,6 +25,7 @@ import android.widget.VideoView;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +40,8 @@ import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class PostActivity extends AppCompatActivity {
 
@@ -58,6 +63,11 @@ public class PostActivity extends AppCompatActivity {
     private String currentUserID = user.getUid();
     private PostMember postMember;
 
+    int clickCount = 0;
+    long startTime;
+    long duration;
+    static final int MAX_DURATION = 500;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +84,7 @@ public class PostActivity extends AppCompatActivity {
         db2 = database.getReference("All Videos").child(currentUserID);
         db3 = database.getReference("All Posts");
         storageReference = FirebaseStorage.getInstance().getReference("User Posts");
+
 
         uploadFile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,6 +173,7 @@ public class PostActivity extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
         final String saveTime = currentTime.format(callForTime.getTime());
 
+
         String time = saveDate + ":" + saveTime;
         if(!TextUtils.isEmpty(description) || selectedUri != null ){
 
@@ -227,5 +239,6 @@ public class PostActivity extends AppCompatActivity {
         }else {
 
         }
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 }

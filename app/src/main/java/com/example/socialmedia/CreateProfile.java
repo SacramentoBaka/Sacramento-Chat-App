@@ -96,7 +96,7 @@ public class CreateProfile extends AppCompatActivity {
                 Picasso.get().load(imageUri).into(profileIMG);
             }
         }catch (Exception e){
-            Toast.makeText(this, "error " + e, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "updated your profile" + e, Toast.LENGTH_SHORT).show();
         }
     }
     private String getFileExt(Uri uri){
