@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -59,12 +60,12 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 //        commentBTN = itemView.findViewById(R.id.idCommentIMG);
         menuOptionsBTN = itemView.findViewById(R.id.id_post_moreButton);
 
-
         SimpleExoPlayer simpleExoPlayer;
         PlayerView playerView = itemView.findViewById(R.id.id_post_video_list);
         // Time Ago
 
         if (type.equals("iv")) {
+            postImage.setVisibility(View.VISIBLE);
             Picasso.get().load(url).into(profileImage);
             Picasso.get().load(postUri).into(postImage);
             descriptionTV.setText(description);

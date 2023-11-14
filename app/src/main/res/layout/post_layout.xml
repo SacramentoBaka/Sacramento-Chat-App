@@ -111,45 +111,27 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/custom_post_background">
+            android:layout_height="wrap_content">
 
-            <androidx.cardview.widget.CardView
+            <ImageView
+                android:id="@+id/id_post_image_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                app:cardPreventCornerOverlap="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/id_post_image_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitXY"
-                    android:visibility="visible"
-                    tools:ignore="MissingConstraints"
-                    tools:visibility="visible" />
-
-            </androidx.cardview.widget.CardView>
+                android:layout_height="400dp"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                tools:ignore="MissingConstraints" />
 
             <com.google.android.exoplayer2.ui.PlayerView
                 android:id="@+id/id_post_video_list"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:resize_mode="fixed_width"
                 app:show_buffering="always"
                 app:show_subtitle_button="true"
                 app:show_timeout="1000"
-                app:use_controller="true" />
+                app:use_controller="true"
+                tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -158,6 +140,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:elevation="10dp"
             android:orientation="horizontal">
 
@@ -195,10 +178,10 @@
                 android:id="@+id/idFavouriteTVSeparator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="top"
                 android:fontFamily="sans-serif"
-                android:text="."
+                android:gravity="top"
                 android:paddingBottom="@dimen/_10sdp"
+                android:text="."
                 android:textColor="#CC9200"
                 android:textSize="@dimen/_15ssp"
                 android:textStyle="bold"

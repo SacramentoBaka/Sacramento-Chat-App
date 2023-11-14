@@ -3,6 +3,7 @@ package com.example.socialmedia;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -45,9 +46,9 @@ import java.util.Locale;
 
 public class PostActivity extends AppCompatActivity {
 
-    private ImageView imageView;
+    private ImageView imageView, profileIMG;
     private VideoView videoView;
-    private Button chooseFile, uploadFile;
+    private CardView chooseFile, uploadFile;
     private ProgressBar progressBar;
     private Uri selectedUri;
     private static final int PICK_FILE = 1;
@@ -75,6 +76,7 @@ public class PostActivity extends AppCompatActivity {
         postMember = new PostMember();
         mediaController = new MediaController(this);
         imageView = findViewById(R.id.idPostImageView);
+        profileIMG = findViewById(R.id.idPostProfileIMG);
         videoView = findViewById(R.id.idPostVideoView);
         progressBar = findViewById(R.id.idProgressBar);
         descriptionET = findViewById(R.id.idPostDescription);
@@ -151,6 +153,7 @@ public class PostActivity extends AppCompatActivity {
                 if (task.getResult().exists()) {
                     name = task.getResult().getString("name");
                     url = task.getResult().getString("url");
+                    Picasso.get().load(url).into(profileIMG);
 
 
 
@@ -239,6 +242,5 @@ public class PostActivity extends AppCompatActivity {
         }else {
 
         }
-        startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
 }
