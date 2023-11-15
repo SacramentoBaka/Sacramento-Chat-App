@@ -19,6 +19,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -48,12 +49,13 @@ public class AskFragment extends Fragment {
     private FirebaseRecyclerOptions<QuestionMember> options;
 
     private ImageView profileIMG;
+    private View view;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_ask, container, false);
+        view = inflater.inflate(R.layout.fragment_ask, container, false);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         currentUserID = user.getUid();
         reference = db.collection("user").document(currentUserID);
@@ -178,7 +180,8 @@ public class AskFragment extends Fragment {
                             String url = task.getResult().getString("url");
                             Picasso.get().load(url).into(profileIMG);
                         } else {
-                            Toast.makeText(myContext, "error", Toast.LENGTH_SHORT).show();
+                            Snackbar.make(view, "Your profile in incomplete, please update your profile", Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
                         }
                     }
                 });

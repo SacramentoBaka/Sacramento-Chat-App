@@ -101,7 +101,7 @@ public class AskActivity extends AppCompatActivity {
                     userID = task.getResult().getString("userID");
 
                 } else {
-                    Toast.makeText(AskActivity.this, "error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AskActivity.this, "Update your profile", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -28,7 +28,7 @@ public class ProfileFragment extends Fragment {
     private ImageView profileIMG, profileIMG2;
     private ImageButton menu;
     private TextView name, profession, bio, email, web;
-    private CardView updateProfile_IMG_BTN, profileToPost;
+    private CardView updateProfile_IMG_BTN, profileToPost, mediaCardView;
 
 
     @Override
@@ -44,6 +44,7 @@ public class ProfileFragment extends Fragment {
         email = view.findViewById(R.id.idProfileFragEmail);
         web = view.findViewById(R.id.idProfileFragWeb);
         updateProfile_IMG_BTN = view.findViewById(R.id.idProfileFragEdit);
+        mediaCardView = view.findViewById(R.id.idProfileFragMedia);
         profileToPost = view.findViewById(R.id.idProfileToAddPost);
         menu = view.findViewById(R.id.idProfileFragMenu);
 
@@ -73,6 +74,13 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), UpdateProfile.class);
+                startActivity(intent);
+            }
+        });
+        mediaCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), IndividualPost.class);
                 startActivity(intent);
             }
         });

@@ -25,7 +25,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,6 +40,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 public class HomeFragment extends Fragment {
@@ -55,13 +59,14 @@ public class HomeFragment extends Fragment {
     private FirebaseRecyclerAdapter<PostMember, PostViewHolder> adapter;
     private FirebaseRecyclerOptions<PostMember> options;
     private String currentUserID;
+    private View view;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        view = inflater.inflate(R.layout.fragment_home, container, false);
         createPost = view.findViewById(R.id.idHomeFragCreateBTN);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         currentUserID = user.getUid();
@@ -98,7 +103,8 @@ public class HomeFragment extends Fragment {
                             String url = task.getResult().getString("url");
                             Picasso.get().load(url).into(profileIMG);
                         } else {
-                            Toast.makeText(myContext, "error", Toast.LENGTH_SHORT).show();
+                            Snackbar.make(view, "Your profile in incomplete, please update your profile", Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
                         }
                     }
                 });
@@ -188,7 +194,6 @@ public class HomeFragment extends Fragment {
                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                                                     dataSnapshot.getRef().removeValue();
-                                                    Toast.makeText(myContext, name + " your post deleted successfully", Toast.LENGTH_SHORT).show();
                                                 }
                                             }
                                             @Override
@@ -222,10 +227,17 @@ public class HomeFragment extends Fragment {
 
                                             }
                                         });
-                                        Toast.makeText(myContext, name + " your post deleted successfully", Toast.LENGTH_SHORT).show();
+                                        StorageReference reference1 = FirebaseStorage.getInstance().getReferenceFromUrl(url);
+                                        reference1.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                Toast.makeText(myContext, "Deleted", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
                                     }else {
 
-                                        Toast.makeText(getActivity(), "Not allowed to delete this post", Toast.LENGTH_SHORT).show();
+                                        Snackbar.make(view, "You are not allowed to delete this post", Snackbar.LENGTH_LONG)
+                                                .setAction("Action", null).show();
                                     }
                                     break;
                                 case R.id.popup_copy_link:

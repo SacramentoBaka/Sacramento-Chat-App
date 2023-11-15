@@ -389,7 +389,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/ProfileFragMedia"
+                android:id="@+id/idProfileFragMedia"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -413,7 +413,6 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="7dp"
                         android:background="@drawable/outline_perm_media_24"
-                        android:onClick="onLikeClick"
                         android:textOff=""
                         android:textOn="" />
                     <TextView

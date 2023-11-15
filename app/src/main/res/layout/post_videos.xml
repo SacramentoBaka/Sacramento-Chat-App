@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_5sdp"
+    app:cardPreventCornerOverlap="false">
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/id_post_video"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:visibility="visible"
+        app:resize_mode="fixed_height"
+        app:show_buffering="always"
+        app:show_subtitle_button="true"
+        app:show_timeout="1000"
+        app:use_controller="true" />
+
+</androidx.cardview.widget.CardView>
