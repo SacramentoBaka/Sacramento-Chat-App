@@ -4,11 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ImageTabFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/id_image_recyclerview_tab"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Image Tab Fragment" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>

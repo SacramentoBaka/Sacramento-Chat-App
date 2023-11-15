@@ -6,6 +6,7 @@
         android:id="@+id/id_post_individual"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_110sdp"
+        android:layout_margin="@dimen/_2sdp"
         android:scaleType="centerCrop"/>
 
 </LinearLayout>

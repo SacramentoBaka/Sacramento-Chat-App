@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".VideoTabFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/id_video_recyclerview_tab"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Vieo Tab Fragment" />
+        android:layout_margin="@dimen/_5sdp"/>
 
 </FrameLayout>
