@@ -373,6 +373,7 @@
                         android:layout_marginEnd="7dp"
                         android:background="@drawable/story"
                         android:textOff=""
+                        android:clickable="false"
                         android:textOn="" />
 
                     <TextView
@@ -414,6 +415,7 @@
                         android:layout_marginEnd="7dp"
                         android:background="@drawable/outline_perm_media_24"
                         android:textOff=""
+                        android:clickable="false"
                         android:textOn="" />
                     <TextView
                         android:layout_width="wrap_content"
@@ -453,7 +455,7 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="7dp"
                         android:background="@drawable/baseline_edit_24"
-                        android:onClick="onLikeClick"
+                        android:clickable="false"
                         android:textOff=""
                         android:textOn="" />
 
@@ -504,8 +506,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/baseline_person_24"
-                        android:clickable="true"
-                        android:scaleType="fitCenter" />
+                        android:clickable="false"
+                        android:scaleType="centerCrop" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -529,7 +531,7 @@
                         android:layout_height="20dp"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/outline_perm_media_24"
-                        android:onClick="onLikeClick"
+                        android:clickable="false"
                         android:textOff=""
                         android:textOn="" />
 

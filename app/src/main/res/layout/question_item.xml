@@ -29,7 +29,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/baseline_person_24"
                     android:clickable="true"
-                    android:scaleType="fitCenter" />
+                    android:scaleType="centerCrop" />
 
             </androidx.cardview.widget.CardView>
 

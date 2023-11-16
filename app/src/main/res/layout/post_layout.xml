@@ -147,14 +147,14 @@
             <ImageButton
                 android:id="@+id/idLikeIMG"
                 android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_24sdp"
+                android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:src="@drawable/round_favorite_border_24" />
 
             <ImageButton
                 android:id="@+id/idFavouriteIMG"
                 android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_24sdp"
+                android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:src="@drawable/outline_star_border_24" />
 
@@ -205,23 +205,23 @@
                 tools:ignore="RtlSymmetry" />
 
             <ImageButton
-                android:layout_width="@dimen/_24sdp"
+                android:layout_width="0dp"
                 android:layout_height="@dimen/_24sdp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-                android:drawableStart="@drawable/round_bookmark"
                 android:drawablePadding="@dimen/_5sdp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:paddingStart="10dp"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp"
                 android:visibility="visible"
-                tools:ignore="RtlSymmetry" />
+                tools:ignore="RtlSymmetry"
+                app:drawableStartCompat="@drawable/round_bookmark" />
 
         </LinearLayout>
 
