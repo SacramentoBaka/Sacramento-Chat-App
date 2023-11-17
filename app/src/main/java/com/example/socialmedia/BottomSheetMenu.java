@@ -144,7 +144,7 @@ public class BottomSheetMenu extends BottomSheetDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Logout")
                 .setMessage("Are you sure you want to logout?")
-                .setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
