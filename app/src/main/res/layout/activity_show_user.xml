@@ -1,354 +1,503 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white"
     android:layout_height="match_parent"
-    tools:context=".ShowUser">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ProfileFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="User Profile"
-        android:textColor="@color/red"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:padding="5dp"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/white"
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center_vertical"
-                android:elevation="8dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="10dp"
-                app:cardPreventCornerOverlap="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.15"
-                app:layout_constraintStart_toStartOf="parent">
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@android:color/white"
+                android:layout_marginBottom="5dp">
 
-
-                <ImageView
-                    android:id="@+id/imageView_showprofile"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:adjustViewBounds="true"
+                <ImageButton
+                    android:id="@+id/idProfileFragMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/baseline_menu_24"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="left|center_vertical"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile"
                     android:clickable="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/baseline_person_24"
-                    tools:layout_editor_absoluteX="51dp"
-                    tools:layout_editor_absoluteY="28dp" />
+                    android:background="@android:color/transparent"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/_12ssp"
+                    android:layout_gravity="center" />
+
             </androidx.cardview.widget.CardView>
 
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:id="@+id/backIMG"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/idCardBackIMG"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="fill"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="@dimen/_5sdp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/background_category_1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <TextView
+                            android:id="@+id/name_tv_showprofile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14ssp"
+                            android:layout_marginTop="10dp"
+                            android:text="Name"
+                            android:layout_marginStart="@dimen/_30sdp"
+                            android:fontFamily="sans-serif-condensed-medium"
+                            android:textAlignment="center" />
+                        <TextView
+                            android:id="@+id/age_tv_showprofile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_10ssp"
+                            android:layout_marginStart="@dimen/_30sdp"
+                            android:text="Name"
+                            android:fontFamily="sans-serif-condensed"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </FrameLayout>
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/imageView_showprofile"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:background="@drawable/background_icon"
+                app:cardCornerRadius="95dp"
+                app:cardElevation="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.13"
+                app:layout_constraintLeft_toLeftOf="@id/backIMG"
+                app:layout_constraintRight_toRightOf="@id/backIMG"
+                app:layout_constraintTop_toTopOf="@id/backIMG"
+                app:layout_constraintVertical_bias="1.0"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius="@dimen/_50sdp"
+                android:adjustViewBounds="true"/>
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/itemGreenLight"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="@dimen/_23sdp"
+                android:background="@drawable/background_icon"
+                android:padding="@dimen/_1sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/round_add_circle_24"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/followers_cardview"
+                app:layout_constraintHorizontal_bias="0.78"
+                app:layout_constraintStart_toStartOf="@id/imageView_showprofile"
+                app:layout_constraintTop_toTopOf="@id/imageView_showprofile"
+                app:layout_constraintVertical_bias="0.90"
+                app:riv_corner_radius="@dimen/_50sdp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/followers_cardview"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:clickable="false"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/posts_cardview"
+                app:layout_constraintTop_toBottomOf="@+id/backIMG"
+                app:layout_constraintStart_toEndOf="@id/imageView_showprofile">
+
+                <TextView
+                    android:id="@+id/idProfileFragFollowers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center"
+                    android:text="Followers"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="top|center_horizontal" />
+
+                <TextView
+                    android:id="@+id/followerNo_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:textColor="@color/black"
+                    android:text="0"
+                    android:textSize="15sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/posts_cardview"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:clickable="false"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/backIMG"
+                app:layout_constraintStart_toEndOf="@id/followers_cardview"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/idProfileFragPost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:gravity="center"
+                    android:text="Posts"
+                    android:layout_gravity="top|center_horizontal"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/postsNo_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="0"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/viewTopSupporter"
+            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@color/gray" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Primary Details"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14ssp"
+            android:paddingStart="@dimen/_10sdp"
+            android:textAlignment="textStart"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="Email"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="10dp"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/_11ssp"
+            android:textAlignment="textStart"/>
+        <TextView
+            android:id="@+id/email_tv_showProfile"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-condensed"
+            android:paddingStart="@dimen/_10sdp"
+            android:textAlignment="textStart"
+            android:text="Email"
+            android:textSize="@dimen/_12ssp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bio"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="10dp"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/_11ssp"
+            android:textAlignment="textStart"/>
+        <TextView
+            android:id="@+id/bio_tv_showprofile"
+            android:layout_width="match_parent"
+            android:fontFamily="sans-serif-condensed"
+            android:paddingStart="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:textAlignment="textStart"
+            android:text="Bio"
+            android:textSize="@dimen/_12ssp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:text="Web"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="10dp"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/_11ssp"
+            android:textAlignment="textStart"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/website_tv_showprofile"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/black"
+                android:textAlignment="textStart"
+                android:text="Web"
+                android:textSize="@dimen/_12ssp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/idSeeAll"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/teal_200"
+                android:textAlignment="textStart"
+                android:text="See All"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/idSeeAllLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/addressHeader"
+                android:layout_width="match_parent"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="Address Details"
+                android:visibility="gone"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:textAlignment="textStart"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                android:fontFamily="sans-serif-condensed"
+                android:paddingStart="@dimen/_10sdp"
+                android:visibility="gone"
+                android:textAlignment="textStart"
+                android:text="Sandton, Johannessburg"
+                android:textSize="16sp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/country"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:visibility="gone"
+                android:fontFamily="sans-serif-condensed"
+                android:paddingStart="@dimen/_10sdp"
+                android:textColor="@color/black"
+                android:textAlignment="textStart"
+                android:text="South Africa"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/idProfileFragAddStory"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_gravity="fill"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:gravity="center"
+                    android:background="@drawable/background_category_1"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ToggleButton
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="7dp"
+                        android:background="@drawable/story"
+                        android:textOff=""
+                        android:clickable="false"
+                        android:textOn="" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Stories"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:textAlignment="center"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/idProfileFragMedia"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_gravity="fill"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:gravity="center"
+                    android:background="@drawable/background_category_1"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ToggleButton
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="7dp"
+                        android:background="@drawable/outline_perm_media_24"
+                        android:textOff=""
+                        android:clickable="false"
+                        android:textOn="" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Media"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:textAlignment="center"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
+
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="10dp"
-                android:gravity="center">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="100dp"
-                    app:cardBackgroundColor="@color/white"
-                    android:layout_height="40dp"
-                    android:clickable="true"
-                    android:id="@+id/followers_cardview">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="20sp"
-                        android:layout_gravity="center_vertical|center_horizontal"
-                        android:textColor="@color/black"
-                        android:id="@+id/followerNo_tv"
-                        android:layout_marginBottom="10dp"/>
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Followers"
-                        android:textSize="15sp"
-                        android:layout_gravity="bottom|center_horizontal"
-                        android:textColor="@color/black" />
-
-                </androidx.cardview.widget.CardView>
-
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="100dp"
-                    app:cardBackgroundColor="@color/white"
-                    android:layout_height="40dp"
-                    android:clickable="true"
-                    android:id="@+id/posts_cardview">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="20sp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_gravity="center_vertical|center_horizontal"
-                        android:textColor="@color/black"
-                        android:id="@+id/postsNo_tv"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Posts"
-                        android:textSize="15sp"
-                        android:layout_gravity="bottom|center_horizontal"
-                        android:textColor="@color/black" />
-
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/list_no_thoughts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Follow"
-                    android:background="@drawable/custom_post_background"
-                    android:textColor="@color/red"
-                    android:fontFamily="sans-serif-condensed-medium"
-                    android:textSize="@dimen/_12ssp"
-                    android:layout_marginStart="10dp"
-                    android:textAlignment="center"
-                    android:padding="3dp"
-                    android:id="@+id/btn_requestshowprofile"/>
-
-
-
-            </LinearLayout>
-
-
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="Post A Journal Entry!!!..."
+                android:textSize="15sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/recyclerView" />
 
         </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Follow"
+            android:background="@drawable/custom_post_background"
+            android:textColor="@color/red"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textSize="@dimen/_12ssp"
+            android:layout_margin="@dimen/_10sdp"
+            android:textAlignment="center"
+            android:padding="3dp"
+            android:id="@+id/btn_requestshowprofile"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:padding="10dp"
+            android:visibility="visible"
+            android:id="@+id/tv_requestshowprofile"
+            android:text="Account is Private"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/profileRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="PRIMARY DETAILS"
-        android:textSize="15sp"
-        android:layout_marginTop="10dp"
-        android:paddingStart="40dp"
-        android:id="@+id/primarydetails_f1"
-        android:textColor="@color/black"
-        android:background="@color/gray"
-        android:padding="5dp"
-        android:layout_marginBottom="10dp" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:textSize="15sp"
-        android:layout_marginStart="20dp"
-        android:padding="5dp"
-        android:textColor="@color/gray"
-        android:drawablePadding="20dp"
-        android:paddingStart="20dp"
-        android:textAlignment="viewStart"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="*******"
-        android:textSize="15sp"
-        android:layout_marginStart="20dp"
-        android:drawablePadding="20dp"
-        android:paddingStart="20dp"
-        android:textAlignment="viewStart"
-        android:id="@+id/name_tv_showprofile"
-        />
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="20dp"
-        android:background="@color/gray"/>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Profession"
-        android:textSize="15sp"
-        android:layout_marginStart="20dp"
-        android:padding="5dp"
-        android:textColor="@color/black"
-        android:drawablePadding="20dp"
-        android:paddingStart="20dp"
-        android:textAlignment="viewStart"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="*******"
-        android:textSize="15sp"
-        android:layout_marginStart="20dp"
-        android:drawablePadding="20dp"
-        android:paddingStart="20dp"
-        android:textAlignment="viewStart"
-        android:id="@+id/bio_tv_showprofile"
-        />
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="20dp"
-        android:background="@color/gray"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bio"
-        android:textSize="15sp"
-        android:layout_marginStart="20dp"
-        android:padding="5dp"
-        android:textColor="@color/black"
-        android:drawablePadding="20dp"
-        android:paddingStart="20dp"
-        android:textAlignment="viewStart"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="*******"
-        android:textSize="15sp"
-        android:layout_marginStart="20dp"
-        android:drawablePadding="20dp"
-        android:paddingStart="20dp"
-        android:textAlignment="viewStart"
-        android:id="@+id/age_tv_showprofile"
-        />
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="20dp"
-        android:background="@color/gray"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="Email"
-        android:textSize="15sp"
-        android:layout_marginStart="20dp"
-        android:padding="5dp"
-        android:drawablePadding="20dp"
-        android:paddingStart="20dp"
-        android:textAlignment="viewStart"
-        />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="********"
-        android:textColor="@color/black"
-        android:layout_marginStart="20dp"
-        android:paddingStart="20dp"
-        android:textSize="15sp"
-        android:layout_marginLeft="0dp"
-        android:id="@+id/email_tv_showProfile"
-        />
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="40dp"
-        android:background="@color/gray"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Website"
-        android:textSize="15sp"
-        android:layout_marginStart="20dp"
-        android:textColor="@color/black"
-        android:padding="5dp"
-        android:drawablePadding="20dp"
-        android:paddingStart="20dp"
-        android:textAlignment="viewStart"
-        />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="********"
-        android:textColor="@color/black"
-        android:layout_marginStart="20dp"
-        android:paddingStart="20dp"
-        android:textSize="15sp"
-        android:id="@+id/website_tv_showprofile"
-        />
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="40dp"
-        android:background="@color/gray"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/red"
-        android:textSize="@dimen/_12ssp"
-        android:fontFamily="sans-serif-condensed"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:padding="10dp"
-        android:visibility="visible"
-        android:id="@+id/tv_requestshowprofile"
-        android:text="Account is Private"/>
-
-</LinearLayout>
+</ScrollView>

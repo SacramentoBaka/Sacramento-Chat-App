@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,13 +27,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
 public class ShowUser extends AppCompatActivity {
 
 
     TextView nametv, professiontv, biotv, emailtv, websitetv, requesttv, button, followers_tv, posts_tv;
-    ImageView imageView;
+    RoundedImageView imageView;
     FirebaseDatabase database;
     DatabaseReference databaseReference, databaseReference1, databaseReference2,
             postnoref;
@@ -72,7 +72,7 @@ public class ShowUser extends AppCompatActivity {
         followers_tv = findViewById(R.id.followerNo_tv);
         posts_tv = findViewById(R.id.postsNo_tv);
         followers_cv = findViewById(R.id.followers_cardview);
-        posts_cd = findViewById(R.id.followers_cardview);
+        posts_cd = findViewById(R.id.posts_cardview);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -109,7 +109,7 @@ public class ShowUser extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 postNo = (int) snapshot.getChildrenCount();
-                   posts_tv.setText(Integer.toString(postNo));
+                posts_tv.setText(Integer.toString(postNo));
             }
 
             @Override
@@ -124,25 +124,23 @@ public class ShowUser extends AppCompatActivity {
                 String status = button.getText().toString();
                 if (status.equals("Follow")) {
                     follow();
-                } else if (status.equals("Requested")) {
+                }
+                if (status.equals("Requested")) {
                     delRequest();
-                } else if (status.equals("Following")) {
+                }
+                if (status.equals("Following")) {
                     unFollow();
                 }
-
             }
         });
-
     }
-
     private void delRequest() {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentUserId = user.getUid();
         databaseReference.child(currentUserId).removeValue();
-        button.setText("Follow ");
+        button.setText("Follow");
     }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -163,7 +161,6 @@ public class ShowUser extends AppCompatActivity {
                             String web_result = task.getResult().getString("web");
                             String Url = task.getResult().getString("url");
                             privacyStatus = task.getResult().getString("privacy");
-
 
                             if (privacyStatus.equals("Public")) {
                                 professiontv.setText(bio_result);
@@ -216,9 +213,8 @@ public class ShowUser extends AppCompatActivity {
                             professionreq = task.getResult().getString("age");
                             urlreq = task.getResult().getString("url");
 
-
                         } else {
-                              Toast.makeText(ShowUser.this, "No Profile exist", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ShowUser.this, "No Profile exist", Toast.LENGTH_SHORT).show();
                         }
                     }
                 })
@@ -287,7 +283,6 @@ public class ShowUser extends AppCompatActivity {
             requestMember.setProfession(professionreq);
             requestMember.setUrl(urlreq);
             requestMember.setName(namereq);
-
             databaseReference1.child(currentUserId).setValue(requestMember);
         } else {
             button.setText("Requested");
@@ -299,6 +294,7 @@ public class ShowUser extends AppCompatActivity {
             requesttv.setText("Request is sent");
         }
     }
+
     private void unFollow() {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

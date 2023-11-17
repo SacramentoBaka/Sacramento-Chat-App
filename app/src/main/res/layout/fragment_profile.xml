@@ -89,13 +89,13 @@
                             android:fontFamily="sans-serif-condensed-medium"
                             android:textAlignment="center" />
                         <TextView
-                            android:id="@+id/idProfileFragProf"
+                            android:id="@+id/idProfileFragProfession"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_10ssp"
                             android:layout_marginStart="@dimen/_30sdp"
-                            android:text="Name"
+                            android:text="Profession"
                             android:fontFamily="sans-serif-condensed"
                             android:textAlignment="center" />
                     </LinearLayout>
@@ -170,7 +170,7 @@
                 app:layout_constraintVertical_bias="0.1" />
 
             <TextView
-                android:id="@+id/idPostsNum"
+                android:id="@+id/followerNo_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
@@ -185,7 +185,7 @@
                 app:layout_constraintVertical_bias="0.25" />
 
             <TextView
-                android:id="@+id/idLikesNum"
+                android:id="@+id/postsNo_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"

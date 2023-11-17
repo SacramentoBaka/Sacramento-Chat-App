@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
@@ -39,7 +38,7 @@ public class ProfileFragment extends Fragment {
         profileIMG = view.findViewById(R.id.idProfileFragIMG);
         profileIMG2 = view.findViewById(R.id.idProfileFragIMG2);
         name = view.findViewById(R.id.idProfileFragName);
-        profession = view.findViewById(R.id.idProfileFragProf);
+        profession = view.findViewById(R.id.idProfileFragProfession);
         bio = view.findViewById(R.id.idProfileFragBio);
         email = view.findViewById(R.id.idProfileFragEmail);
         web = view.findViewById(R.id.idProfileFragWeb);
