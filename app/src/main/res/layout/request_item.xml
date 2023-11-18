@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="5dp"
+    android:elevation="@dimen/_5sdp"
     app:cardBackgroundColor="@color/white"
     android:layout_margin="10dp">
     <LinearLayout
@@ -50,8 +51,9 @@
                 android:id="@+id/tv_request_name_item"
                 android:textColor="@color/black"
                 android:text="Name"
+                android:fontFamily="sans-serif-condensed-medium"
                 android:paddingStart="17dp"
-                android:textSize="15sp"/>
+                android:textSize="@dimen/_12ssp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,6 +66,7 @@
                     android:text="Accept"
                     android:id="@+id/accept_request"
                     android:textSize="12sp"
+                    android:fontFamily="sans-serif-condensed"
                     android:textColor="@color/black"
                     android:padding="5dp"
                     android:layout_marginStart="10dp"
@@ -76,6 +79,7 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="Decline"
+                    android:fontFamily="sans-serif-condensed"
                     android:id="@+id/decline_request"
                     android:textSize="12sp"
                     android:textAlignment="center"

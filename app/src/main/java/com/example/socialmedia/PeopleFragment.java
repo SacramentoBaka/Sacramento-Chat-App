@@ -81,6 +81,20 @@ public class PeopleFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        documentReference.get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                        if (task.getResult().exists()) {
+                            String url = task.getResult().getString("url");
+                            Picasso.get().load(url).into(profileIMG);
+                        } else {
+                            Snackbar.make(view, "Your profile in incomplete, please update your profile", Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
+                        }
+                    }
+                });
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

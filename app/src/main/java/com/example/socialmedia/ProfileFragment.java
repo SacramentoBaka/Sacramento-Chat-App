@@ -18,6 +18,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -26,8 +31,10 @@ import com.squareup.picasso.Picasso;
 public class ProfileFragment extends Fragment {
     private ImageView profileIMG, profileIMG2;
     private ImageButton menu;
-    private TextView name, profession, bio, email, web;
+    private TextView name, profession, bio, email, web,followersNo, postNo;
     private CardView updateProfile_IMG_BTN, profileToPost, mediaCardView;
+    int followerCount;
+
 
 
     @Override
@@ -46,6 +53,8 @@ public class ProfileFragment extends Fragment {
         mediaCardView = view.findViewById(R.id.idProfileFragMedia);
         profileToPost = view.findViewById(R.id.idProfileToAddPost);
         menu = view.findViewById(R.id.idProfileFragMenu);
+        followersNo = view.findViewById(R.id.idProfileFragFollowersNo);
+        postNo = view.findViewById(R.id.idProfileFragPostNo);
 
         profileIMG.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,9 +101,13 @@ public class ProfileFragment extends Fragment {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentID = user.getUid();
         DocumentReference reference;
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference followersRef, postRef;
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
         reference = firestore.collection("user").document(currentID);
+        followersRef = database.getReference("followers").child(currentID);
+
         reference.get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
@@ -121,5 +134,22 @@ public class ProfileFragment extends Fragment {
                         }
                     }
                 });
+
+        // refernce for following
+        followersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (snapshot.exists()) {
+                    followerCount = (int) snapshot.getChildrenCount();
+                    followersNo.setText(Integer.toString(followerCount));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
