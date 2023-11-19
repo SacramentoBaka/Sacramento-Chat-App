@@ -133,6 +133,7 @@ public class PeopleFragment extends Fragment {
                         String name = getItem(position).getName();
                         String url = getItem(position).getUrl();
                         String uid = getItem(position).getUserID();
+                        String profession = getItem(position).getProfession();
 
 
                         holder.viewUserprofile.setOnClickListener(new View.OnClickListener() {
@@ -147,6 +148,7 @@ public class PeopleFragment extends Fragment {
                                     intent.putExtra("n", name);
                                     intent.putExtra("u", url);
                                     intent.putExtra("uid", uid);
+                                    intent.putExtra("profession", profession);
                                     startActivity(intent);
                                 }
                             }
@@ -191,12 +193,12 @@ public class PeopleFragment extends Fragment {
 
                         String uid = getItem(position).getUserid();
                         String name = getItem(position).getName();
+                        String age = getItem(position).getProfession();
                         String bio = getItem(position).getBio();
                         String email = getItem(position).getEmail();
                         String privacy = getItem(position).getPrivacy();
                         String url = getItem(position).getUrl();
                         String website = getItem(position).getWebsite();
-                        String age = getItem(position).getProfession();
 
 
                         holder.button2.setOnClickListener(new View.OnClickListener() {
@@ -213,7 +215,6 @@ public class PeopleFragment extends Fragment {
                                 String uid = getItem(position).getUserid();
                                 databaseReference1 = database.getReference("followers").child(currentUserId);
                                 requestMember.setName(name);
-
                                 requestMember.setUserid(uid);
                                 requestMember.setUrl(url);
                                 requestMember.setProfession(age);
@@ -223,8 +224,6 @@ public class PeopleFragment extends Fragment {
 
                                 Toast.makeText(getActivity(), "Accepted", Toast.LENGTH_SHORT).show();
                                 decline(name);
-
-
                                 // handling request notification
 
                             }

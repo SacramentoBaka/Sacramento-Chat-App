@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso;
 
 public class RequestViewHolder extends RecyclerView.ViewHolder {
     ImageView imageView;
-    TextView textView;
+    TextView nameTV, professionTV;
     TextView button1,button2;
 
     public RequestViewHolder(@NonNull View itemView) {
@@ -23,11 +23,13 @@ public class RequestViewHolder extends RecyclerView.ViewHolder {
                            String Privacy, String email, String followers, String website, String userid){
 
         imageView = itemView.findViewById(R.id.imageView_request);
-        textView = itemView.findViewById(R.id.tv_request_name_item);
+        nameTV = itemView.findViewById(R.id.tv_request_name_item);
+        professionTV = itemView.findViewById(R.id.tv_request_profession_item);
         button1 = itemView.findViewById(R.id.accept_request);
         button2 = itemView.findViewById(R.id.decline_request);
 
         Picasso.get().load(url).into(imageView);
-        textView.setText(name);
+        nameTV.setText(name);
+        professionTV.setText(profession);
     }
 }

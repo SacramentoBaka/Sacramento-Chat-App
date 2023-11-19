@@ -79,6 +79,8 @@ public class ShowUser extends AppCompatActivity {
             url = extras.getString("u");
             name = extras.getString("n");
             userid = extras.getString("uid");
+            age = extras.getString("profession");
+
         } else {
 
         }
@@ -124,11 +126,9 @@ public class ShowUser extends AppCompatActivity {
                 String status = button.getText().toString();
                 if (status.equals("Follow")) {
                     follow();
-                }
-                if (status.equals("Requested")) {
+                }else if (status.equals("Request sent")) {
                     delRequest();
-                }
-                if (status.equals("Following")) {
+                }else if (status.equals("Following")) {
                     unFollow();
                 }
             }
@@ -140,6 +140,7 @@ public class ShowUser extends AppCompatActivity {
         String currentUserId = user.getUid();
         databaseReference.child(currentUserId).removeValue();
         button.setText("Follow");
+        requesttv.setText("Request Cancelled");
     }
     @Override
     protected void onStart() {
@@ -163,9 +164,9 @@ public class ShowUser extends AppCompatActivity {
                             privacyStatus = task.getResult().getString("privacy");
 
                             if (privacyStatus.equals("Public")) {
-                                professiontv.setText(bio_result);
+                                professiontv.setText(age_result);
                                 nametv.setText(name_result);
-                                biotv.setText(age_result);
+                                biotv.setText(bio_result);
                                 emailtv.setText(email_result);
                                 websitetv.setText(web_result);
                                 Picasso.get().load(Url).into(imageView);
@@ -174,9 +175,9 @@ public class ShowUser extends AppCompatActivity {
 
                                 String u = button.getText().toString();
                                 if (u.equals("Following")) {
-                                    professiontv.setText(bio_result);
+                                    professiontv.setText(age_result);
                                     nametv.setText(name_result);
-                                    biotv.setText(age_result);
+                                    biotv.setText(bio_result);
                                     emailtv.setText(email_result);
                                     websitetv.setText(web_result);
                                     Picasso.get().load(Url).into(imageView);
@@ -210,7 +211,7 @@ public class ShowUser extends AppCompatActivity {
 
                         if (task.getResult().exists()) {
                             namereq = task.getResult().getString("name");
-                            professionreq = task.getResult().getString("age");
+                            professionreq = task.getResult().getString("profession");
                             urlreq = task.getResult().getString("url");
 
                         } else {
@@ -247,7 +248,7 @@ public class ShowUser extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 if (snapshot.hasChild(currentUserId)) {
-                    button.setText("Requested");
+                    button.setText("Request sent");
                 }
             }
 
@@ -284,6 +285,7 @@ public class ShowUser extends AppCompatActivity {
             requestMember.setUrl(urlreq);
             requestMember.setName(namereq);
             databaseReference1.child(currentUserId).setValue(requestMember);
+            requesttv.setText(" ");
         } else {
             button.setText("Requested");
             requestMember.setUserid(currentUserId);
@@ -308,7 +310,7 @@ public class ShowUser extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         databaseReference1.child(currentUserId).removeValue();
                         button.setText("Follow");
-                        followers_tv.setText("0");
+                        followers_tv.setText("No Followers");
                         Toast.makeText(ShowUser.this, "Unfollowed", Toast.LENGTH_SHORT).show();
                     }
                 })

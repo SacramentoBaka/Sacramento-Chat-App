@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +27,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -60,7 +58,6 @@ public class HomeFragment extends Fragment {
     private FirebaseRecyclerOptions<PostMember> options;
     private String currentUserID;
     private View view;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -142,7 +139,7 @@ public class HomeFragment extends Fragment {
 
                                 case R.id.popup_download:
 
-                                    if(type.equals("iv")){
+                                    if (type.equals("iv")) {
 
                                         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(postUrl));
                                         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI |
@@ -151,11 +148,11 @@ public class HomeFragment extends Fragment {
                                         request.setDescription("Downloading image...");
                                         request.allowScanningByMediaScanner();
                                         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                                        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, name+System.currentTimeMillis()+
+                                        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, name + System.currentTimeMillis() +
                                                 ".jpg");
-                                        DownloadManager manager = (DownloadManager)getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
+                                        DownloadManager manager = (DownloadManager) getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
                                         manager.enqueue(request);
-                                        Toast.makeText(myContext, name + " your Post Deleted Successfully", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(myContext, "Downloaded Successfully", Toast.LENGTH_SHORT).show();
 
                                     } else if (type.equals("vv")) {
                                         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(postUrl));
@@ -165,15 +162,12 @@ public class HomeFragment extends Fragment {
                                         request.setDescription("Downloading video...");
                                         request.allowScanningByMediaScanner();
                                         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                                        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, name+System.currentTimeMillis()+
+                                        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, name + System.currentTimeMillis() +
                                                 ".mp4");
-                                        DownloadManager manager = (DownloadManager)getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
+                                        DownloadManager manager = (DownloadManager) getActivity().getSystemService(Context.DOWNLOAD_SERVICE);
                                         manager.enqueue(request);
-                                        Toast.makeText(myContext, name + "Downloaded Successfully", Toast.LENGTH_SHORT).show();
-
+                                        Toast.makeText(myContext, " Downloaded Successfully", Toast.LENGTH_SHORT).show();
                                     }
-
-                                    Toast.makeText(getActivity(), "Downloading", Toast.LENGTH_SHORT).show();
                                     break;
                                 case R.id.popup_share:
 
@@ -187,12 +181,12 @@ public class HomeFragment extends Fragment {
                                     Toast.makeText(getActivity(), "Sharing", Toast.LENGTH_SHORT).show();
                                     break;
                                 case R.id.popup_delete:
-                                    if(userID.equals(currentUserID)){
+                                    if (userID.equals(currentUserID)) {
                                         Query query = db1.orderByChild("time").equalTo(time);
                                         query.addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                                                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                                                     dataSnapshot.getRef().removeValue();
                                                 }
                                             }
@@ -205,10 +199,11 @@ public class HomeFragment extends Fragment {
                                         query2.addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                                                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                                                     dataSnapshot.getRef().removeValue();
                                                 }
                                             }
+
                                             @Override
                                             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -218,10 +213,11 @@ public class HomeFragment extends Fragment {
                                         query3.addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                                                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                                                     dataSnapshot.getRef().removeValue();
                                                 }
                                             }
+
                                             @Override
                                             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -234,7 +230,7 @@ public class HomeFragment extends Fragment {
                                                 Toast.makeText(myContext, "Deleted", Toast.LENGTH_SHORT).show();
                                             }
                                         });
-                                    }else {
+                                    } else {
 
                                         Snackbar.make(view, "You are not allowed to delete this post", Snackbar.LENGTH_LONG)
                                                 .setAction("Action", null).show();
@@ -242,7 +238,7 @@ public class HomeFragment extends Fragment {
                                     break;
                                 case R.id.popup_copy_link:
 
-                                    ClipboardManager clipManager = (ClipboardManager)getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                                    ClipboardManager clipManager = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
                                     ClipData clipData = ClipData.newPlainText("String", postUrl);
                                     clipManager.setPrimaryClip(clipData);
                                     clipData.getDescription();
@@ -332,6 +328,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
     }
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);

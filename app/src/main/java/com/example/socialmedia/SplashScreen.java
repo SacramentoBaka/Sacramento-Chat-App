@@ -29,8 +29,8 @@ public class SplashScreen extends AppCompatActivity {
         appName = findViewById(R.id.idSplashTextName);
         textName = findViewById(R.id.idSplashName);
 
-        ObjectAnimator animatorY = ObjectAnimator.ofFloat(imageView, "y", 400f);
-        ObjectAnimator animatorName = ObjectAnimator.ofFloat(appName, "x", 200f);
+        ObjectAnimator animatorY = ObjectAnimator.ofFloat(imageView, "y", 900f);
+        ObjectAnimator animatorName = ObjectAnimator.ofFloat(appName, "x", 380f);
         animatorY.setDuration(animTime);
         animatorName.setDuration(animTime);
         AnimatorSet animatorSet = new AnimatorSet();

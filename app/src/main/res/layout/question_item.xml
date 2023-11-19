@@ -107,9 +107,9 @@
                     android:layout_marginEnd="@dimen/_15sdp"
                     android:layout_weight="1"
                     android:clickable="true"
-                    android:fontFamily="sans-serif-condensed"
+                    android:fontFamily="sans-serif-condensed-medium"
                     android:padding="5dp"
-                    android:text="Reply"
+                    android:text="View Reply"
                     android:textAlignment="center"
                     android:textColor="@color/red"
                     android:textSize="@dimen/_10ssp" />
