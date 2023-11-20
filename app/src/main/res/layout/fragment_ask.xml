@@ -28,11 +28,11 @@
 
                 <ImageButton
                     android:id="@+id/idProfileFragMenu"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/_24sdp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical|end"
                     android:src="@drawable/baseline_menu_24"
-                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
                     android:background="@android:color/transparent" />
 
             </androidx.cardview.widget.CardView>
@@ -44,7 +44,7 @@
             android:layout_width="280dp"
             android:layout_height="35dp"
             android:background="@drawable/custom_search_background"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal|center_vertical"
             android:hint="Search"
             android:textSize="@dimen/_12ssp"
             android:paddingStart="@dimen/_5sdp"
@@ -56,11 +56,10 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="@dimen/_24sdp"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_marginStart="@dimen/_15sdp"
             android:layout_gravity="center_vertical|start"
-            android:layout_margin="10dp"
-            android:layout_marginEnd="12dp"
-            app:cardCornerRadius="@dimen/_15sdp"
+            app:cardCornerRadius="@dimen/_12sdp"
             app:cardPreventCornerOverlap="false">
 
             <ImageView
@@ -80,9 +79,7 @@
         android:background="@drawable/background_category_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/_5sdp"
-        android:paddingBottom="@dimen/_5sdp"
-        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_38sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/idAskFragTop" />

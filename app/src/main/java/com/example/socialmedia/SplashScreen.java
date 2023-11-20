@@ -30,7 +30,7 @@ public class SplashScreen extends AppCompatActivity {
         textName = findViewById(R.id.idSplashName);
 
         ObjectAnimator animatorY = ObjectAnimator.ofFloat(imageView, "y", 900f);
-        ObjectAnimator animatorName = ObjectAnimator.ofFloat(appName, "x", 380f);
+        ObjectAnimator animatorName = ObjectAnimator.ofFloat(appName, "x", 500f);
         animatorY.setDuration(animTime);
         animatorName.setDuration(animTime);
         AnimatorSet animatorSet = new AnimatorSet();
@@ -46,9 +46,7 @@ public class SplashScreen extends AppCompatActivity {
                 finish();
             }
         }, 2500);
-
     }
-
     @Override
     protected void onStart() {
         super.onStart();
