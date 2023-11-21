@@ -18,7 +18,7 @@ public class ProfileViewHolder extends RecyclerView.ViewHolder {
 
     TextView textViewName, textViewProfession, viewUserprofile, chatSendMessage;
     ImageView imageView;
-    CardView cardView;
+    CardView cardView, chatToProfile;
 
     public ProfileViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -44,9 +44,10 @@ public class ProfileViewHolder extends RecyclerView.ViewHolder {
         String currentUID = user.getUid();
 
         ImageView chatImageView = itemView.findViewById(R.id.idChatItemIMG);
-        TextView chatNameTv = imageView.findViewById(R.id.idChatItemName);
+        TextView chatNameTv = itemView.findViewById(R.id.idChatItemName);
         TextView chatProfessionTV = itemView.findViewById(R.id.idChatItemProfession);
-        chatSendMessage = imageView.findViewById(R.id.idChatItemMessage);
+        chatSendMessage = itemView.findViewById(R.id.idChatItemMessage);
+        chatToProfile = itemView.findViewById(R.id.idChatToProfile);
 
         if(currentUID.equals(uid)){
             Picasso.get().load(url).into(chatImageView);
@@ -54,7 +55,7 @@ public class ProfileViewHolder extends RecyclerView.ViewHolder {
             chatProfessionTV.setText(prof);
             chatSendMessage.setVisibility(View.INVISIBLE);
         }else {
-            chatSendMessage.setVisibility(View.INVISIBLE);
+            chatSendMessage.setVisibility(View.VISIBLE);
             Picasso.get().load(url).into(chatImageView);
             chatNameTv.setText(name);
             chatProfessionTV.setText(prof);

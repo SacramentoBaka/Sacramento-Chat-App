@@ -77,8 +77,16 @@ public class HomeFragment extends Fragment {
         db3 = database.getReference("All Posts");
         recyclerView = view.findViewById(R.id.idPostRecyclerView);
         profileIMG = view.findViewById(R.id.idHomeFragProfileIMG);
+        TextView textView = view.findViewById(R.id.idHomeSearch);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), ChatActivity.class));
+            }
+        });
         createPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

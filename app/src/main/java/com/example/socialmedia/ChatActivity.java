@@ -138,7 +138,7 @@ public class ChatActivity extends AppCompatActivity {
                         String uid = getItem(position).getUserID();
                         String profession = getItem(position).getProfession();
 
-                        holder.chatSendMessage.setOnClickListener(new View.OnClickListener() {
+                        holder.chatToProfile.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 if (currentUID.equals(uid)) {
