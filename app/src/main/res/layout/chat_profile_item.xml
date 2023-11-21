@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/_5sdp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:cardCornerRadius="25dp"
+                app:cardPreventCornerOverlap="false">
+
+                <ImageView
+                    android:id="@+id/idChatItemIMG"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/baseline_person_24"
+                    android:clickable="true"
+                    android:scaleType="centerCrop" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_3sdp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/idChatItemName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="sans-serif-condensed"
+                    android:hint="Name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10ssp" />
+
+                <TextView
+                    android:id="@+id/idQuestionItemTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="sans-serif-condensed"
+                    android:hint="Time"
+                    android:visibility="invisible"
+                    android:textSize="@dimen/_8ssp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#60AAA4AA" />
+
+            <TextView
+                android:id="@+id/idChatItemProfession"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:hint="Profession"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp" />
+
+            <View
+                android:id="@+id/viewSupporter"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#60AAA4AA" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/idChatItemMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:clickable="true"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:padding="5dp"
+                    android:text="Send Message"
+                    android:textAlignment="center"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/_10ssp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

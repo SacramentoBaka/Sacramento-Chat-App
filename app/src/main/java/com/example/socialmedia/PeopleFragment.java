@@ -135,7 +135,6 @@ public class PeopleFragment extends Fragment {
                         String uid = getItem(position).getUserID();
                         String profession = getItem(position).getProfession();
 
-
                         holder.viewUserprofile.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -155,7 +154,6 @@ public class PeopleFragment extends Fragment {
                         });
 
                     }
-
                     @NonNull
                     @Override
                     public ProfileViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -165,10 +163,7 @@ public class PeopleFragment extends Fragment {
                         return new ProfileViewHolder(view);
                     }
                 };
-
-
         firebaseRecyclerAdapter1.startListening();
-//
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
         recyclerView_profile.setLayoutManager(gridLayoutManager);
         recyclerView_profile.setAdapter(firebaseRecyclerAdapter1);
