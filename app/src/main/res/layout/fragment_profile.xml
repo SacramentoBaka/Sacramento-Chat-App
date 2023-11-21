@@ -300,7 +300,7 @@
                 android:fontFamily="sans-serif-condensed"
                 android:textColor="@color/teal_200"
                 android:textAlignment="textStart"
-                android:text="See All"
+                android:text="See all"
                 android:textSize="14sp"
                 android:layout_height="wrap_content"/>
         </LinearLayout>

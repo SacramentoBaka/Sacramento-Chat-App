@@ -26,11 +26,12 @@
                 <ImageButton
                     android:id="@+id/idProfileFragMenu"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_menu_24"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/baseline_keyboard_arrow_left_24"
                     android:layout_margin="10dp"
+                    app:tint="@android:color/black"
                     android:background="@android:color/transparent"
-                    android:layout_gravity="left|center_vertical"/>
+                    android:layout_gravity="start|center_vertical"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -42,9 +43,23 @@
                     android:textSize="@dimen/_12ssp"
                     android:layout_gravity="center" />
 
+                <ImageButton
+                    android:id="@+id/idProfileActMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/baseline_menu_24"
+                    android:layout_margin="10dp"
+                    app:tint="@android:color/black"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="end|center_vertical"/>
+
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_5sdp"
+            android:background="@drawable/background_category_1" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -310,7 +325,7 @@
                 android:fontFamily="sans-serif-condensed"
                 android:textColor="@color/teal_200"
                 android:textAlignment="textStart"
-                android:text="See All"
+                android:text="See all"
                 android:textSize="14sp"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -362,49 +377,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
             android:orientation="horizontal">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/idProfileFragAddStory"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:layout_gravity="fill"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="5dp"
-                app:cardUseCompatPadding="true">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical|center_horizontal"
-                    android:gravity="center"
-                    android:background="@drawable/background_category_1"
-                    android:orientation="horizontal"
-                    tools:ignore="UseCompoundDrawables">
-
-                    <ToggleButton
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="7dp"
-                        android:background="@drawable/story"
-                        android:textOff=""
-                        android:clickable="false"
-                        android:textOn="" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Stories"
-                        android:textColor="@color/black"
-                        android:fontFamily="sans-serif-condensed-medium"
-                        android:textAlignment="center"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/idProfileFragMedia"
                 android:layout_width="match_parent"
@@ -437,6 +409,48 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Media"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:textAlignment="center"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/idProfileFragAddStory"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_gravity="fill"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:gravity="center"
+                    android:background="@drawable/background_category_1"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ToggleButton
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="7dp"
+                        android:background="@drawable/baseline_question_answer_24"
+                        android:textOff=""
+                        android:clickable="false"
+                        android:textOn="" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Message"
                         android:textColor="@color/black"
                         android:fontFamily="sans-serif-condensed-medium"
                         android:textAlignment="center"
