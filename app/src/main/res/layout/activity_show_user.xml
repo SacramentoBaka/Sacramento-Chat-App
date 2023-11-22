@@ -23,8 +23,8 @@
                 android:background="@android:color/white"
                 android:layout_marginBottom="5dp">
 
-                <ImageButton
-                    android:id="@+id/idProfileFragMenu"
+                <ImageView
+                    android:id="@+id/idProfileBack"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:src="@drawable/baseline_keyboard_arrow_left_24"

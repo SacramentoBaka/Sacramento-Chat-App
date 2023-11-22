@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -32,6 +33,7 @@ public class ChatActivity extends AppCompatActivity {
     EditText searchET;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String currentUID = user.getUid();
+    ImageView backPress;
 
 
     @Override
@@ -42,6 +44,8 @@ public class ChatActivity extends AppCompatActivity {
 
         searchET = findViewById(R.id.idChatSearchUser);
         recyclerView = findViewById(R.id.idChatRecyclerView);
+        backPress = findViewById(R.id.idChatBack);
+        backPress.setOnClickListener(view -> onBackPressed());
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(ChatActivity.this));
 
@@ -59,12 +63,13 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
 
-                String query = searchET.getText().toString().toUpperCase();
-                Query search = profileRef.orderByChild("name").startAt(query).endAt(query+"\uf0ff");
+                String query = searchET.getText().toString();
 
                 FirebaseRecyclerOptions<All_UserMember> options1 =
                         new FirebaseRecyclerOptions.Builder<All_UserMember>()
-                                .setQuery(profileRef, All_UserMember.class)
+                                .setQuery(FirebaseDatabase.getInstance().getReference().child("All Users")
+                                        .orderByChild("name")
+                                        .startAt(query).endAt(query+"\uf8ff"), All_UserMember.class)
                                 .build();
 
                 FirebaseRecyclerAdapter<All_UserMember, ProfileViewHolder> firebaseRecyclerAdapter1 =
@@ -168,6 +173,5 @@ public class ChatActivity extends AppCompatActivity {
                 };
         firebaseRecyclerAdapter1.startListening();
         recyclerView.setAdapter(firebaseRecyclerAdapter1);
-
     }
 }

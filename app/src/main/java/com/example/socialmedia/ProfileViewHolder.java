@@ -26,7 +26,6 @@ public class ProfileViewHolder extends RecyclerView.ViewHolder {
 
     public void setProfile(FragmentActivity fragmentActivity, String name, String uid, String prof, String url){
 
-
         cardView = itemView.findViewById(R.id.cardview_profile);
         textViewName = itemView.findViewById(R.id.tv_name_profile);
         textViewProfession = itemView.findViewById(R.id.tv_profession_profile);

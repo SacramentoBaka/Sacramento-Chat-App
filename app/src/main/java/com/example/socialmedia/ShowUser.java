@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,7 @@ public class ShowUser extends AppCompatActivity {
 
     TextView nametv, professiontv, biotv, emailtv, websitetv, requesttv, button, followers_tv, posts_tv;
     RoundedImageView imageView;
+    ImageView backPress;
     FirebaseDatabase database;
     DatabaseReference databaseReference, databaseReference1, databaseReference2,
             postnoref;
@@ -68,6 +70,7 @@ public class ShowUser extends AppCompatActivity {
         websitetv = findViewById(R.id.website_tv_showprofile);
         button = findViewById(R.id.btn_requestshowprofile);
         requesttv = findViewById(R.id.tv_requestshowprofile);
+        backPress = findViewById(R.id.idProfileBack);
 
         followers_tv = findViewById(R.id.followerNo_tv);
         posts_tv = findViewById(R.id.postsNo_tv);
@@ -91,6 +94,12 @@ public class ShowUser extends AppCompatActivity {
         databaseReference2 = database.getReference("followers");
         documentReference1 = db.collection("user").document(currentUserId);
 
+        backPress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         websitetv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -203,7 +212,7 @@ public class ShowUser extends AppCompatActivity {
 
                     }
                 });
-
+        
         documentReference1.get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
@@ -225,7 +234,6 @@ public class ShowUser extends AppCompatActivity {
 
                     }
                 });
-
         // refernce for following
         databaseReference1.addValueEventListener(new ValueEventListener() {
             @Override
@@ -236,13 +244,11 @@ public class ShowUser extends AppCompatActivity {
                     followers_tv.setText(Integer.toString(followercount));
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -251,7 +257,6 @@ public class ShowUser extends AppCompatActivity {
                     button.setText("Request sent");
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -262,7 +267,6 @@ public class ShowUser extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.child(userid).hasChild(currentUserId)) {
                     button.setText("Following");
-                } else {
                 }
             }
 
@@ -271,12 +275,10 @@ public class ShowUser extends AppCompatActivity {
             }
         });
     }
-
     void follow() {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String currentUserId = user.getUid();
-
 
         if (privacyStatus.equals("Public")) {
             button.setText("Following");
@@ -317,7 +319,6 @@ public class ShowUser extends AppCompatActivity {
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
                     }
                 });
         builder.create();

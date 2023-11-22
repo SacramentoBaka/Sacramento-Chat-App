@@ -74,7 +74,6 @@ public class PeopleFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(false);
 
-
         return view;
     }
 
@@ -125,8 +124,6 @@ public class PeopleFragment extends Fragment {
                 new FirebaseRecyclerAdapter<All_UserMember, ProfileViewHolder>(options1) {
                     @Override
                     protected void onBindViewHolder(@NonNull ProfileViewHolder holder, int position, @NonNull All_UserMember model) {
-
-                        final String postkey = getRef(position).getKey();
 
                         holder.setProfile(getActivity(), model.getName(), model.getUserID(), model.getProfession(), model.getUrl());
 
@@ -195,7 +192,6 @@ public class PeopleFragment extends Fragment {
                         String url = getItem(position).getUrl();
                         String website = getItem(position).getWebsite();
 
-
                         holder.button2.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -220,12 +216,9 @@ public class PeopleFragment extends Fragment {
                                 Toast.makeText(getActivity(), "Accepted", Toast.LENGTH_SHORT).show();
                                 decline(name);
                                 // handling request notification
-
                             }
                         });
-
                     }
-
                     @NonNull
                     @Override
                     public RequestViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -239,7 +232,6 @@ public class PeopleFragment extends Fragment {
         firebaseRecyclerAdapter.startListening();
         recyclerView.setAdapter(firebaseRecyclerAdapter);
     }
-
     private void decline(String name) {
 
         Query query = databaseReference.orderByChild("name").equalTo(name);
@@ -250,9 +242,8 @@ public class PeopleFragment extends Fragment {
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     dataSnapshot1.getRef().removeValue();
                 }
-                //   Toast.makeText(getActivity(), "Removed", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(getActivity(), "Removed", Toast.LENGTH_SHORT).show();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 ///
