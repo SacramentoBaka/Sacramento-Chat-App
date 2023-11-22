@@ -47,7 +47,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <EditText
-                    android:id="@+id/idAnswerQuestion"
+                    android:id="@+id/idPeopleSearch"
                     android:layout_width="280dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center"

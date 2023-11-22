@@ -10,9 +10,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +50,7 @@ public class PeopleFragment extends Fragment {
     RecyclerView recyclerView, recyclerView_profile;
     RequestMember requestMember;
     TextView requestTV;
+    EditText searchEditText;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -59,6 +63,7 @@ public class PeopleFragment extends Fragment {
         databaseReference = database.getReference("Requests").child(currentUserId);
         profileRef = database.getReference("All Users");
         profileIMG = view.findViewById(R.id.idPeopleFragProfileIMG);
+        searchEditText = view.findViewById(R.id.idPeopleSearch);
 
 
         requestMember = new RequestMember();
@@ -73,6 +78,76 @@ public class PeopleFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(false);
+
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                String query = searchEditText.getText().toString();
+
+                FirebaseRecyclerOptions<All_UserMember> options1 =
+                        new FirebaseRecyclerOptions.Builder<All_UserMember>()
+                                .setQuery(FirebaseDatabase.getInstance().getReference().child("All Users")
+                                        .orderByChild("name")
+                                        .startAt(query).endAt(query+"~"), All_UserMember.class)
+                                .build();
+
+                FirebaseRecyclerAdapter<All_UserMember, ProfileViewHolder> firebaseRecyclerAdapter1 =
+                        new FirebaseRecyclerAdapter<All_UserMember, ProfileViewHolder>(options1) {
+                            @Override
+                            protected void onBindViewHolder(@NonNull ProfileViewHolder holder, int position, @NonNull All_UserMember model) {
+
+                                holder.setProfile(getActivity(), model.getName(), model.getUserID(), model.getProfession(), model.getUrl());
+
+                                String name = getItem(position).getName();
+                                String url = getItem(position).getUrl();
+                                String uid = getItem(position).getUserID();
+                                String profession = getItem(position).getProfession();
+
+                                holder.viewUserprofile.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if (currentUserId.equals(uid)) {
+                                            Snackbar.make(view, "Your are currently the User, goto your profile...", Snackbar.LENGTH_LONG)
+                                                    .setAction("Action", null).show();
+
+                                        } else {
+                                            Intent intent = new Intent(getActivity(), ShowUser.class);
+                                            intent.putExtra("n", name);
+                                            intent.putExtra("u", url);
+                                            intent.putExtra("uid", uid);
+                                            intent.putExtra("profession", profession);
+                                            startActivity(intent);
+                                        }
+                                    }
+                                });
+
+                            }
+                            @NonNull
+                            @Override
+                            public ProfileViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                                View view = LayoutInflater.from(parent.getContext())
+                                        .inflate(R.layout.profile, parent, false);
+
+                                return new ProfileViewHolder(view);
+                            }
+                        };
+                firebaseRecyclerAdapter1.startListening();
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false);
+                recyclerView_profile.setLayoutManager(gridLayoutManager);
+                recyclerView_profile.setAdapter(firebaseRecyclerAdapter1);
+            }
+        });
 
         return view;
     }

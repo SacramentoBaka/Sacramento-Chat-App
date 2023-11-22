@@ -19,6 +19,8 @@ public class ProfileViewHolder extends RecyclerView.ViewHolder {
     TextView textViewName, textViewProfession, viewUserprofile, chatSendMessage;
     ImageView imageView;
     CardView cardView, chatToProfile;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    String currentUID = user.getUid();
 
     public ProfileViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -32,15 +34,19 @@ public class ProfileViewHolder extends RecyclerView.ViewHolder {
         viewUserprofile = itemView.findViewById(R.id.viewUser_profile);
         imageView = itemView.findViewById(R.id.profile_imageview);
 
-        Picasso.get().load(url).into(imageView);
-        textViewName.setText(name);
-        textViewProfession.setText(prof);
-
+        if(currentUID.equals(uid)){
+            Picasso.get().load(url).into(imageView);
+            textViewName.setText(name);
+            textViewProfession.setText(prof);
+            viewUserprofile.setVisibility(View.INVISIBLE);
+        }else {
+            viewUserprofile.setVisibility(View.VISIBLE);
+            Picasso.get().load(url).into(imageView);
+            textViewName.setText(name);
+            textViewProfession.setText(prof);
+        }
     }
     public void setProfileInChat(Application fragmentActivity, String name, String uid, String prof, String url){
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String currentUID = user.getUid();
 
         ImageView chatImageView = itemView.findViewById(R.id.idChatItemIMG);
         TextView chatNameTv = itemView.findViewById(R.id.idChatItemName);
@@ -58,8 +64,6 @@ public class ProfileViewHolder extends RecyclerView.ViewHolder {
             Picasso.get().load(url).into(chatImageView);
             chatNameTv.setText(name);
             chatProfessionTV.setText(prof);
-
         }
-
     }
 }

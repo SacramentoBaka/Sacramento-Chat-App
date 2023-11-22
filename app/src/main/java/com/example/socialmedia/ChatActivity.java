@@ -35,7 +35,6 @@ public class ChatActivity extends AppCompatActivity {
     String currentUID = user.getUid();
     ImageView backPress;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +68,7 @@ public class ChatActivity extends AppCompatActivity {
                         new FirebaseRecyclerOptions.Builder<All_UserMember>()
                                 .setQuery(FirebaseDatabase.getInstance().getReference().child("All Users")
                                         .orderByChild("name")
-                                        .startAt(query).endAt(query+"\uf8ff"), All_UserMember.class)
+                                        .startAt(query).endAt(query+"~"), All_UserMember.class)
                                 .build();
 
                 FirebaseRecyclerAdapter<All_UserMember, ProfileViewHolder> firebaseRecyclerAdapter1 =
@@ -86,7 +85,7 @@ public class ChatActivity extends AppCompatActivity {
                                 String uid = getItem(position).getUserID();
                                 String profession = getItem(position).getProfession();
 
-                                holder.chatSendMessage.setOnClickListener(new View.OnClickListener() {
+                                holder.chatToProfile.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         if (currentUID.equals(uid)) {
