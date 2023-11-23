@@ -32,15 +32,20 @@ public class ChatActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     EditText searchET;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    String currentUID = user.getUid();
+    String currentUID;
+
+    {
+        assert user != null;
+        currentUID = user.getUid();
+    }
+
     ImageView backPress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        profileRef = database.getReference("All Users");
-
+        profileRef = database.getReference("followers").child(currentUID);
         searchET = findViewById(R.id.idChatSearchUser);
         recyclerView = findViewById(R.id.idChatRecyclerView);
         backPress = findViewById(R.id.idChatBack);
@@ -66,7 +71,8 @@ public class ChatActivity extends AppCompatActivity {
 
                 FirebaseRecyclerOptions<All_UserMember> options1 =
                         new FirebaseRecyclerOptions.Builder<All_UserMember>()
-                                .setQuery(FirebaseDatabase.getInstance().getReference().child("All Users")
+                                .setQuery(FirebaseDatabase.getInstance().getReference().child("followers")
+                                        .child(currentUID)
                                         .orderByChild("name")
                                         .startAt(query).endAt(query+"~"), All_UserMember.class)
                                 .build();
@@ -76,8 +82,6 @@ public class ChatActivity extends AppCompatActivity {
                             @Override
                             protected void onBindViewHolder(@NonNull ProfileViewHolder holder, int position, @NonNull All_UserMember model) {
 
-                                final String postkey = getRef(position).getKey();
-
                                 holder.setProfileInChat(getApplication(), model.getName(), model.getUserID(), model.getProfession(), model.getUrl());
 
                                 String name = getItem(position).getName();
@@ -85,7 +89,7 @@ public class ChatActivity extends AppCompatActivity {
                                 String uid = getItem(position).getUserID();
                                 String profession = getItem(position).getProfession();
 
-                                holder.chatToProfile.setOnClickListener(new View.OnClickListener() {
+                                holder.chatSendMessage.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         if (currentUID.equals(uid)) {
@@ -102,7 +106,6 @@ public class ChatActivity extends AppCompatActivity {
                                         }
                                     }
                                 });
-
                             }
                             @NonNull
                             @Override
@@ -133,8 +136,6 @@ public class ChatActivity extends AppCompatActivity {
                     @Override
                     protected void onBindViewHolder(@NonNull ProfileViewHolder holder, int position, @NonNull All_UserMember model) {
 
-                        final String postkey = getRef(position).getKey();
-
                         holder.setProfileInChat(getApplication(), model.getName(), model.getUserID(), model.getProfession(), model.getUrl());
 
                         String name = getItem(position).getName();
@@ -142,7 +143,7 @@ public class ChatActivity extends AppCompatActivity {
                         String uid = getItem(position).getUserID();
                         String profession = getItem(position).getProfession();
 
-                        holder.chatToProfile.setOnClickListener(new View.OnClickListener() {
+                        holder.chatSendMessage.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 if (currentUID.equals(uid)) {
@@ -150,7 +151,7 @@ public class ChatActivity extends AppCompatActivity {
                                             .setAction("Action", null).show();
 
                                 } else {
-                                    Intent intent = new Intent(getApplicationContext(), ShowUser.class);
+                                    Intent intent = new Intent(getApplicationContext(), PostActivity.class);
                                     intent.putExtra("n", name);
                                     intent.putExtra("u", url);
                                     intent.putExtra("uid", uid);
@@ -159,7 +160,6 @@ public class ChatActivity extends AppCompatActivity {
                                 }
                             }
                         });
-
                     }
                     @NonNull
                     @Override

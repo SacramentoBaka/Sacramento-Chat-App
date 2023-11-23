@@ -26,7 +26,7 @@ public class ProfileViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
     }
 
-    public void setProfile(FragmentActivity fragmentActivity, String name, String uid, String prof, String url){
+    public void setProfile(FragmentActivity fragmentActivity, String name, String uid, String prof, String url) {
 
         cardView = itemView.findViewById(R.id.cardview_profile);
         textViewName = itemView.findViewById(R.id.tv_name_profile);
@@ -34,19 +34,20 @@ public class ProfileViewHolder extends RecyclerView.ViewHolder {
         viewUserprofile = itemView.findViewById(R.id.viewUser_profile);
         imageView = itemView.findViewById(R.id.profile_imageview);
 
-        if(currentUID.equals(uid)){
+        if (currentUID.equals(uid)) {
             Picasso.get().load(url).into(imageView);
             textViewName.setText(name);
             textViewProfession.setText(prof);
             viewUserprofile.setVisibility(View.INVISIBLE);
-        }else {
+        } else {
             viewUserprofile.setVisibility(View.VISIBLE);
             Picasso.get().load(url).into(imageView);
             textViewName.setText(name);
             textViewProfession.setText(prof);
         }
     }
-    public void setProfileInChat(Application fragmentActivity, String name, String uid, String prof, String url){
+
+    public void setProfileInChat(Application fragmentActivity, String name, String uid, String prof, String url) {
 
         ImageView chatImageView = itemView.findViewById(R.id.idChatItemIMG);
         TextView chatNameTv = itemView.findViewById(R.id.idChatItemName);
@@ -54,16 +55,10 @@ public class ProfileViewHolder extends RecyclerView.ViewHolder {
         chatSendMessage = itemView.findViewById(R.id.idChatItemMessage);
         chatToProfile = itemView.findViewById(R.id.idChatToProfile);
 
-        if(currentUID.equals(uid)){
-            Picasso.get().load(url).into(chatImageView);
-            chatNameTv.setText(name);
-            chatProfessionTV.setText(prof);
-            chatSendMessage.setVisibility(View.INVISIBLE);
-        }else {
-            chatSendMessage.setVisibility(View.VISIBLE);
-            Picasso.get().load(url).into(chatImageView);
-            chatNameTv.setText(name);
-            chatProfessionTV.setText(prof);
-        }
+        chatSendMessage.setVisibility(View.VISIBLE);
+        Picasso.get().load(url).into(chatImageView);
+        chatNameTv.setText(name);
+        chatProfessionTV.setText(prof);
+
     }
 }

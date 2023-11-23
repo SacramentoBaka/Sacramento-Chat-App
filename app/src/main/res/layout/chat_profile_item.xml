@@ -52,24 +52,14 @@
 
                 <TextView
                     android:id="@+id/idChatItemName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="start|center_vertical"
                     android:fontFamily="sans-serif-condensed"
                     android:hint="Name"
+                    android:layout_marginStart="@dimen/_15sdp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10ssp" />
-
-                <TextView
-                    android:id="@+id/idQuestionItemTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:fontFamily="sans-serif-condensed"
-                    android:hint="Time"
-                    android:visibility="invisible"
-                    android:textSize="@dimen/_8ssp" />
 
             </LinearLayout>
 
@@ -80,12 +70,14 @@
 
             <TextView
                 android:id="@+id/idChatItemProfession"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_15sdp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:hint="Profession"
+                android:textAlignment="viewStart"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp" />
 
@@ -105,10 +97,14 @@
                     android:id="@+id/idChatItemMessage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
                     android:clickable="true"
+                    android:layout_marginBottom="@dimen/_3sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:padding="5dp"
+                    android:background="@drawable/custom_search_background"
                     android:text="Send Message"
                     android:textAlignment="center"
                     android:textColor="@color/red"

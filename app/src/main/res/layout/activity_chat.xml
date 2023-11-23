@@ -31,7 +31,7 @@
             android:maxLines="1"
             android:layout_marginEnd="@dimen/_15sdp"
             android:layout_marginStart="@dimen/_15sdp"
-            android:background="@drawable/search_back"
+            android:background="@drawable/custom_search_background"
             android:padding="@dimen/_5sdp"
             android:textColorHint="#FF919191"
             android:layout_gravity="center_vertical"
@@ -42,6 +42,24 @@
             android:textSize="@dimen/_14ssp"
             android:drawablePadding="@dimen/_10sdp"/>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_5sdp"
+        android:background="@drawable/background_category_1" />
+
+    <TextView
+        android:id="@+id/id_requestTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:fontFamily="sans-serif-condensed"
+        android:minHeight="?actionBarSize"
+        android:padding="@dimen/appbar_padding"
+        android:text="Friends List"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+        android:textColor="@color/red"
+        android:textSize="@dimen/_12ssp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/idChatRecyclerView"
