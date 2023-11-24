@@ -97,7 +97,7 @@ public class ChatActivity extends AppCompatActivity {
                                                     .setAction("Action", null).show();
 
                                         } else {
-                                            Intent intent = new Intent(getApplicationContext(), ShowUser.class);
+                                            Intent intent = new Intent(getApplicationContext(), MessageActivity.class);
                                             intent.putExtra("n", name);
                                             intent.putExtra("u", url);
                                             intent.putExtra("uid", uid);
@@ -151,7 +151,7 @@ public class ChatActivity extends AppCompatActivity {
                                             .setAction("Action", null).show();
 
                                 } else {
-                                    Intent intent = new Intent(getApplicationContext(), PostActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(), MessageActivity.class);
                                     intent.putExtra("n", name);
                                     intent.putExtra("u", url);
                                     intent.putExtra("uid", uid);
