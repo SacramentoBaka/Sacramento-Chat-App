@@ -142,6 +142,7 @@
         app:layout_constraintEnd_toStartOf="@id/idMessageSend" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/idMessageRecyclerview"
         android:layout_width="409dp"
         android:layout_height="622dp"
         app:layout_constraintStart_toStartOf="parent"

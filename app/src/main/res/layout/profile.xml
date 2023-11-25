@@ -10,7 +10,6 @@
     app:cardBackgroundColor="@color/white"
     android:layout_height="wrap_content">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:hint="name"
+                android:gravity="center_horizontal"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:textSize="@dimen/_12ssp"
                 android:id="@+id/tv_name_profile" />
@@ -63,6 +63,7 @@
                 android:textColor="@color/gray"
                 android:fontFamily="sans-serif-condensed"
                 android:hint="profession"
+                android:gravity="center_horizontal"
                 android:textSize="@dimen/_10ssp"
                 android:layout_margin="@dimen/_5sdp"
                 android:id="@+id/tv_profession_profile" />
@@ -74,6 +75,7 @@
                 android:fontFamily="sans-serif-condensed-medium"
                 android:textSize="@dimen/_10ssp"
                 android:padding="@dimen/_5sdp"
+                android:gravity="center_horizontal"
                 android:background="@drawable/custom_post_background"
                 android:layout_marginBottom="4dp"
                 android:textAlignment="center"
