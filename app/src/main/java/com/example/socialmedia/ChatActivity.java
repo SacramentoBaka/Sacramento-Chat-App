@@ -152,8 +152,8 @@ public class ChatActivity extends AppCompatActivity {
 
                                 } else {
                                     Intent intent = new Intent(getApplicationContext(), MessageActivity.class);
-                                    intent.putExtra("n", name);
-                                    intent.putExtra("u", url);
+                                    intent.putExtra("name", name);
+                                    intent.putExtra("url", url);
                                     intent.putExtra("uid", uid);
                                     intent.putExtra("profession", profession);
                                     startActivity(intent);
