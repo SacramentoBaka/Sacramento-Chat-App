@@ -38,7 +38,7 @@ public class MessageActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference rootRef1, rootRef2;
     MessageMember messageMember;
-    String receiverName, receiverUID, senderUID, url;
+    String receiverName, receiverUID, senderUID, url, profession;
 
 
     @Override
@@ -46,13 +46,15 @@ public class MessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
-        Bundle bundle = getIntent().getExtras();
-        if(bundle != null){
-            url = bundle.getString("url");
-            receiverName = bundle.getString("name");
-            receiverUID = bundle.getString("uid");
-        }else {
-            Toast.makeText(this, "No User Info", Toast.LENGTH_SHORT).show();
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            url = extras.getString("url");
+            receiverName = extras.getString("name");
+            receiverUID = extras.getString("userid");
+            profession = extras.getString("profession");
+
+        } else {
+
         }
 
         messageMember = new MessageMember();
@@ -72,8 +74,8 @@ public class MessageActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         senderUID = user.getUid();
 
-        rootRef1 = database.getReference("Message").child(senderUID).child(receiverUID);
-        rootRef2 = database.getReference("Message").child(receiverUID).child(senderUID);
+        rootRef1 = database.getReference("Message").child(senderUID);
+        rootRef2 = database.getReference("Message").child(senderUID);
 
         sendBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,9 +114,7 @@ public class MessageActivity extends AppCompatActivity {
                 };
         firebaseRecyclerAdapter1.startListening();
         recyclerView.setAdapter(firebaseRecyclerAdapter1);
-
     }
-
     private void sendMessage() {
 
         String message = messageET.getText().toString();
